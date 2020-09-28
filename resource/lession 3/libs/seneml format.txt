@@ -1,0 +1,23 @@
+1. Data topic
+  - Channel: channels/88ff4a5b-fecd-4d17-97f0-57b668af9f2c/messages/ct/application_senml-json
+  - Chức năng:
+  - Topic: /sensor/data
+  - Data content:
+	"spot_meter":{
+		"region_of_interest": [39,29,40,30],
+		"temperature_min": 31.27,
+		"temperature_avg": 31.33,
+		"temperature_max": 31.37
+	 }
+	+) "region_of_interest": tọa độ khu vực đang theo dõi
+	+) "temperature_min": nhiệt độ thấp nhất
+	+) "temperature_avg": nhiệt độ trung bình
+	+) "temperature_max": nhiệt độ cao nhất
+
+   SenML format
+   [
+      {"bt":1.320078429e+09,"n":"roi","vs":"39,29,40,30"},
+	  {"n":"min","u":"Cel","v":31.27},
+	  {"n":"avg","u":"Cel","v":31.33},
+	  {"n":"max","u":"Cel","v":31.37}
+   ]
