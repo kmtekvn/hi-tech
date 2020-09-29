@@ -21,3 +21,9 @@
 	  {"n":"avg","u":"Cel","v":31.33},
 	  {"n":"max","u":"Cel","v":31.37}
    ]
+    Heartbeat sensor
+	[
+		{"n":"hb","u":"","v":60},
+		{"n":"temp","u":"Cel","v":36.5}
+	]
+	
