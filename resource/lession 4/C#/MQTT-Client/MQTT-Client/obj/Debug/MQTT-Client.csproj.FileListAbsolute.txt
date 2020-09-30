@@ -1,0 +1,26 @@
+D:\MimosaTEK\fw_workspace\mgreen-ng\mgreen-offline\MQTT-Tool\MQTT-Client\MQTT-Client\bin\Debug\MQTT-Client.exe.config
+D:\MimosaTEK\fw_workspace\mgreen-ng\mgreen-offline\MQTT-Tool\MQTT-Client\MQTT-Client\bin\Debug\MQTT-Client.exe
+D:\MimosaTEK\fw_workspace\mgreen-ng\mgreen-offline\MQTT-Tool\MQTT-Client\MQTT-Client\bin\Debug\MQTT-Client.pdb
+D:\MimosaTEK\fw_workspace\mgreen-ng\mgreen-offline\MQTT-Tool\MQTT-Client\MQTT-Client\bin\Debug\M2Mqtt.dll
+D:\MimosaTEK\fw_workspace\mgreen-ng\mgreen-offline\MQTT-Tool\MQTT-Client\MQTT-Client\obj\Debug\MQTT-Client.csprojAssemblyReference.cache
+D:\MimosaTEK\fw_workspace\mgreen-ng\mgreen-offline\MQTT-Tool\MQTT-Client\MQTT-Client\obj\Debug\MQTT-Client.csproj.ResolveComReference.cache
+D:\MimosaTEK\fw_workspace\mgreen-ng\mgreen-offline\MQTT-Tool\MQTT-Client\MQTT-Client\obj\Debug\MQTT_Client.Form1.resources
+D:\MimosaTEK\fw_workspace\mgreen-ng\mgreen-offline\MQTT-Tool\MQTT-Client\MQTT-Client\obj\Debug\MQTT_Client.Properties.Resources.resources
+D:\MimosaTEK\fw_workspace\mgreen-ng\mgreen-offline\MQTT-Tool\MQTT-Client\MQTT-Client\obj\Debug\MQTT-Client.csproj.GenerateResource.cache
+D:\MimosaTEK\fw_workspace\mgreen-ng\mgreen-offline\MQTT-Tool\MQTT-Client\MQTT-Client\obj\Debug\MQTT-Client.csproj.CoreCompileInputs.cache
+D:\MimosaTEK\fw_workspace\mgreen-ng\mgreen-offline\MQTT-Tool\MQTT-Client\MQTT-Client\obj\Debug\MQTT-Client.csproj.CopyComplete
+D:\MimosaTEK\fw_workspace\mgreen-ng\mgreen-offline\MQTT-Tool\MQTT-Client\MQTT-Client\obj\Debug\MQTT-Client.exe
+D:\MimosaTEK\fw_workspace\mgreen-ng\mgreen-offline\MQTT-Tool\MQTT-Client\MQTT-Client\obj\Debug\MQTT-Client.pdb
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\obj\Debug\MQTT-Client.csprojAssemblyReference.cache
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\obj\Debug\MQTT-Client.csproj.ResolveComReference.cache
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\obj\Debug\MQTT_Client.Form1.resources
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\obj\Debug\MQTT_Client.Properties.Resources.resources
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\obj\Debug\MQTT-Client.csproj.GenerateResource.cache
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\obj\Debug\MQTT-Client.csproj.CoreCompileInputs.cache
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\obj\Debug\MQTT-Client.exe
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\obj\Debug\MQTT-Client.pdb
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\bin\Debug\MQTT-Client.exe.config
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\bin\Debug\MQTT-Client.exe
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\bin\Debug\MQTT-Client.pdb
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\bin\Debug\M2Mqtt.dll
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\obj\Debug\MQTT-Client.csproj.CopyComplete
