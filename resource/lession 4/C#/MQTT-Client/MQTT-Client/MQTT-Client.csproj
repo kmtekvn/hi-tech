@@ -38,6 +38,9 @@
     <Reference Include="M2Mqtt">
       <HintPath>..\M2Mqtt.dll</HintPath>
     </Reference>
+    <Reference Include="SenML.NET, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SenML.NET.1.0.0\lib\netstandard2.0\SenML.NET.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Messaging" />
@@ -73,6 +76,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

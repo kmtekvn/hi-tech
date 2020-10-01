@@ -13,7 +13,7 @@ using uPLibrary.Networking.M2Mqtt.Messages;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.IO;
 using System.IO.Ports;
-
+using SenML.NET;
 
 namespace MQTT_Client
 {
@@ -28,6 +28,8 @@ namespace MQTT_Client
 
         //Variables for MQTT connection
         static MqttClient client;
+
+        static SenML.NET.SenML senMLInst = new SenML.NET.SenML();
 
         string str_broker_add = "";
         string str_acc = "";
@@ -118,6 +120,9 @@ namespace MQTT_Client
         {
             this.AcceptButton = this.ConnectButton;
             Topic_pub_cmb.SelectedIndex = 1;
+
+            senMLInst.bn = "test";
+         //   AppendTextBox(senMLInst);
         }
 
         private void Form1_Closing(object sender, FormClosingEventArgs e)
@@ -179,5 +184,8 @@ namespace MQTT_Client
 
             client.Publish("command", pubData);
         }
+
+    
+
     }
 }
