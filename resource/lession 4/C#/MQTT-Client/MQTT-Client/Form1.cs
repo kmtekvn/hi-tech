@@ -14,7 +14,10 @@ using Excel = Microsoft.Office.Interop.Excel;
 using System.IO;
 using System.IO.Ports;
 using SenML.NET;
-
+using Newtonsoft.Json;
+/*
+ Libs: Install-Package Newtonsoft.Json
+ */
 namespace MQTT_Client
 {
     public partial class Form1 : Form
@@ -31,6 +34,8 @@ namespace MQTT_Client
 
         static SenML.NET.SenML senMLInst = new SenML.NET.SenML();
 
+        static string test_senml_buf = "[{\"bn\":\"gateway\"},{\"bn\":\"dev1\",\"n\":\"temperature\",\"u\":\"Cel\",\"v\":35.0},{\"n\":\"breadth\",\"u\":\"beats\",\"v\":60.0}]";
+
         string str_broker_add = "";
         string str_acc = "";
         string str_pass = "";
@@ -40,6 +45,7 @@ namespace MQTT_Client
         string str_controller_ID = "";
 
         string str_monitor_topic = "";
+
 
         private void myUI(string myStr, TextBox ctl)
         {
@@ -108,7 +114,22 @@ namespace MQTT_Client
 
         private void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
-            AppendTextBox(Encoding.Default.GetString(e.Message));
+            string payload = Encoding.Default.GetString(e.Message);
+            AppendTextBox(payload);
+
+            JsonTextReader reader = new JsonTextReader(new StringReader(payload));
+
+            while (reader.Read())
+            {
+                if (reader.Value != null)
+                {
+                    AppendTextBox(string.Format("Token: {0}, Value: {1}\r\n", reader.TokenType, reader.Value));
+                }
+                else
+                {
+                    AppendTextBox(string.Format("Token: {0}\r\n", reader.TokenType));
+                }
+            }
         }
 
         public Form1()
@@ -122,7 +143,20 @@ namespace MQTT_Client
             Topic_pub_cmb.SelectedIndex = 1;
 
             senMLInst.bn = "test";
-         //   AppendTextBox(senMLInst);
+            AppendTextBox(test_senml_buf);
+            JsonTextReader reader = new JsonTextReader(new StringReader(test_senml_buf));
+
+            while (reader.Read())
+            {
+                if (reader.Value != null)
+                {
+                    AppendTextBox(string.Format("Token: {0}, Value: {1}\r\n", reader.TokenType, reader.Value));
+                }
+                else
+                {
+                    AppendTextBox(string.Format("Token: {0}\r\n", reader.TokenType));
+                }
+            }
         }
 
         private void Form1_Closing(object sender, FormClosingEventArgs e)

@@ -121,3 +121,5 @@ D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\bin\Debug\System.X
 D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\bin\Debug\System.Xml.XPath.dll
 D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\bin\Debug\System.Xml.XPath.XDocument.dll
 D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\bin\Debug\SenML.NET.dll
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\bin\Debug\Newtonsoft.Json.dll
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\bin\Debug\Newtonsoft.Json.xml
