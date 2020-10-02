@@ -39,12 +39,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Topic_pub_cmb = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_publish = new System.Windows.Forms.Button();
             this.PubMessageTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtShow = new System.Windows.Forms.TextBox();
             this.tmrUpdateUI = new System.Windows.Forms.Timer(this.components);
             this.txtShow2 = new System.Windows.Forms.TextBox();
-            this.btn_publish = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -164,6 +166,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Publish";
             // 
+            // btn_publish
+            // 
+            this.btn_publish.Location = new System.Drawing.Point(774, 16);
+            this.btn_publish.Name = "btn_publish";
+            this.btn_publish.Size = new System.Drawing.Size(75, 51);
+            this.btn_publish.TabIndex = 69;
+            this.btn_publish.Text = "Publish";
+            this.btn_publish.UseVisualStyleBackColor = true;
+            this.btn_publish.Click += new System.EventHandler(this.btn_publish_Click);
+            // 
             // PubMessageTextBox
             // 
             this.PubMessageTextBox.Location = new System.Drawing.Point(64, 44);
@@ -184,38 +196,51 @@
             // txtShow
             // 
             this.txtShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtShow.Location = new System.Drawing.Point(445, 167);
+            this.txtShow.Location = new System.Drawing.Point(445, 192);
             this.txtShow.Multiline = true;
             this.txtShow.Name = "txtShow";
             this.txtShow.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtShow.Size = new System.Drawing.Size(408, 222);
+            this.txtShow.Size = new System.Drawing.Size(408, 197);
             this.txtShow.TabIndex = 40;
             // 
             // txtShow2
             // 
             this.txtShow2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtShow2.Location = new System.Drawing.Point(10, 167);
+            this.txtShow2.Location = new System.Drawing.Point(10, 198);
             this.txtShow2.Multiline = true;
             this.txtShow2.Name = "txtShow2";
             this.txtShow2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtShow2.Size = new System.Drawing.Size(413, 222);
+            this.txtShow2.Size = new System.Drawing.Size(413, 191);
             this.txtShow2.TabIndex = 42;
             // 
-            // btn_publish
+            // label3
             // 
-            this.btn_publish.Location = new System.Drawing.Point(774, 16);
-            this.btn_publish.Name = "btn_publish";
-            this.btn_publish.Size = new System.Drawing.Size(75, 51);
-            this.btn_publish.TabIndex = 69;
-            this.btn_publish.Text = "Publish";
-            this.btn_publish.UseVisualStyleBackColor = true;
-            this.btn_publish.Click += new System.EventHandler(this.btn_publish_Click);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(15, 170);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 70;
+            this.label3.Text = "Sent Data";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(455, 170);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(79, 13);
+            this.label6.TabIndex = 71;
+            this.label6.Text = "Received Data";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(873, 421);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtShow2);
             this.Controls.Add(this.txtShow);
             this.Controls.Add(this.groupBox2);
@@ -254,6 +279,8 @@
         private System.Windows.Forms.Timer tmrUpdateUI;
         private System.Windows.Forms.TextBox txtShow2;
         private System.Windows.Forms.Button btn_publish;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label6;
     }
 }
 

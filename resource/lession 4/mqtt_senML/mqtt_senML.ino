@@ -4,7 +4,7 @@
 #include <PubSubClient.h>
 #include <kpn_senml.h>
 
-#define TEST_SKIP_WIFI   
+//#define TEST_SKIP_WIFI   
 
 typedef struct {
   unsigned char heartbeat;
@@ -19,10 +19,10 @@ SenMLPack dev1("dev1");
 char retFrameBuf[SENML_DOC_BUFFER_SIZE];
 sensorData_t sensorStruct;
 
-IPAddress server(192, 168, 43, 241);
+IPAddress server(192, 168, 43, 204);
 
-char ssid[] = "milo house";           // your network SSID (name)
-char pass[] = "1234567890a";           // your network password
+char ssid[] = "Mlem Mlem";           // your network SSID (name)
+char pass[] = "1234567891";           // your network password
 int status = WL_IDLE_STATUS;   // the Wifi radio's status
 
 unsigned long previousMillis  = 0;
@@ -41,7 +41,7 @@ void collectSensorData(sensorData_t* userbuf){
   }
 }
 
-String makeSenMLFrame(sensorData_t* sensorStructP, const char* retFrameP) {
+void makeSenMLFrame(sensorData_t* sensorStructP,  char* retFrameP) {
    SenMLFloatRecord rec1(KPN_SENML_TEMPERATURE, SENML_UNIT_DEGREES_CELSIUS, sensorStructP->temperature);
    dev1.add(&rec1);
 
@@ -61,10 +61,21 @@ void checkAndSendingData() {
   
   // check to see if the interval time is passed. 
   if (currentMillis - previousMillis >= interval == true ) {
+      Serial.println("Collect sensor data");
+      // Doc du lieu cam bien
        collectSensorData(&sensorStruct);
+       // Tao frame data
        memset(retFrameBuf, 0x00, SENML_DOC_BUFFER_SIZE);
-       makeSenMLFrame(&sensorStruct, retFrameBuf);
-       //client.publish("command","hello world");
+      // makeSenMLFrame(&sensorStruct, retFrameBuf);
+
+      // TODO: move to outside
+       const char* mqttMonitorTopic = "monitor";
+          
+       // Gui du lieu toi MQTT broker (PC)
+       strcpy(retFrameBuf, "[{\"bn\":\"gateway\"},{\"bn\":\"dev1\",\"n\":\"temperature\",\"u\":\"Cel\",\"v\":35.0},{\"n\":\"breadth\",\"u\":\"beats\",\"v\":60.0}]");
+       
+       client.publish(mqttMonitorTopic, retFrameBuf, strlen(retFrameBuf));
+       
       // save the time when we displayed the string for the last time
       previousMillis = currentMillis;
   }
@@ -115,8 +126,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
   }
   Serial.println();
 }
-
-#if 1
+// #if 1
+#ifdef TEST_SKIP_WIFI
 void loop(){
   checkAndSendingData();
 }
@@ -135,8 +146,8 @@ void reconnect() {
   // Loop until we're reconnected
   while (!client.connected()) {
     // Hien thi dia chi IP cua board
-    Serial.print("My IP address:");
-    Serial.print(espClient.getIPAddress());
+ //   Serial.print("My IP address:");
+  //  Serial.print(espClient.getIPAddress());
 
     Serial.print("Attempting MQTT connection...");
     // Attempt to connect, just a name to identify the client

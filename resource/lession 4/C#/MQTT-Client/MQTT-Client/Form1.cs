@@ -216,10 +216,12 @@ namespace MQTT_Client
                 pubData[i] = (byte)'A';
             }
 
-            client.Publish("command", pubData);
+            client.Publish("control", pubData);
         }
 
-    
-
+        private void label3_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
