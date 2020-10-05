@@ -19,21 +19,28 @@ SenMLPack dev1("dev1");
 char retFrameBuf[SENML_DOC_BUFFER_SIZE];
 sensorData_t sensorStruct;
 
-IPAddress server(192, 168, 43, 204);
+IPAddress server(192, 168, 1, 5);
 
-char ssid[] = "Mlem Mlem";           // your network SSID (name)
-char pass[] = "1234567891";           // your network password
+#if 1
+char ssid[] = "milo house";           // your network SSID (name)
+char pass[] = "1234567890a";           // your network password
+#endif
+
 int status = WL_IDLE_STATUS;   // the Wifi radio's status
 
 unsigned long previousMillis  = 0;
 unsigned long currentMillis   = 0;
 int interval = 1000;
 
+sensorData_t data;
 // Initialize the Ethernet client object
 WiFiEspClient espClient;
 
 PubSubClient client(espClient);
 
+  SenMLFloatRecord rec1(KPN_SENML_TEMPERATURE, SENML_UNIT_DEGREES_CELSIUS, 0);
+  SenMLFloatRecord rec2(KPN_SENML_BREADTH, SENML_UNIT_BEATS, 0);
+  
 void collectSensorData(sensorData_t* userbuf){
   if (userbuf != NULL) {
     userbuf->heartbeat = 60;
@@ -42,37 +49,34 @@ void collectSensorData(sensorData_t* userbuf){
 }
 
 void makeSenMLFrame(sensorData_t* sensorStructP,  char* retFrameP) {
-   SenMLFloatRecord rec1(KPN_SENML_TEMPERATURE, SENML_UNIT_DEGREES_CELSIUS, sensorStructP->temperature);
-   dev1.add(&rec1);
 
-   SenMLFloatRecord rec2(KPN_SENML_BREADTH, SENML_UNIT_BEATS, sensorStructP->heartbeat);
-   dev1.add(&rec2);
-
-//    doc.toJson(&Serial);
-//    Serial.println();
- 
-  doc.toJson(retFrameP, SENML_DOC_BUFFER_SIZE);  
-  Serial.println(retFrameP);
+ rec1.set(sensorStructP->temperature);
+ rec2.set(sensorStructP->heartbeat);
+ doc.toJson(retFrameP, SENML_DOC_BUFFER_SIZE);  
 }
 
 void checkAndSendingData() {
-  sensorData_t data;
+  
   currentMillis = millis();
   
   // check to see if the interval time is passed. 
   if (currentMillis - previousMillis >= interval == true ) {
-      Serial.println("Collect sensor data");
+      
       // Doc du lieu cam bien
        collectSensorData(&sensorStruct);
+       Serial.println("Collect sensor data");
+       
        // Tao frame data
        memset(retFrameBuf, 0x00, SENML_DOC_BUFFER_SIZE);
-      // makeSenMLFrame(&sensorStruct, retFrameBuf);
+       makeSenMLFrame(&sensorStruct, retFrameBuf);
+       Serial.println("Created data frame");
+       Serial.println(retFrameBuf);
 
       // TODO: move to outside
        const char* mqttMonitorTopic = "monitor";
           
        // Gui du lieu toi MQTT broker (PC)
-       strcpy(retFrameBuf, "[{\"bn\":\"gateway\"},{\"bn\":\"dev1\",\"n\":\"temperature\",\"u\":\"Cel\",\"v\":35.0},{\"n\":\"breadth\",\"u\":\"beats\",\"v\":60.0}]");
+      // strcpy(retFrameBuf, "[{\"bn\":\"gateway\"},{\"bn\":\"dev1\",\"n\":\"temperature\",\"u\":\"Cel\",\"v\":35.0},{\"n\":\"breadth\",\"u\":\"beats\",\"v\":60.0}]");
        
        client.publish(mqttMonitorTopic, retFrameBuf, strlen(retFrameBuf));
        
@@ -88,7 +92,11 @@ void setup() {
 
   senMLSetLogger(&Serial);
   doc.add(&dev1);
-  
+
+
+  dev1.add(&rec1);
+  dev1.add(&rec2);
+   
 #ifndef TEST_SKIP_WIFI
   // initialize ESP module
   WiFi.init(&Serial1);
