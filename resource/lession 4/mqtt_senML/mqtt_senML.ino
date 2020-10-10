@@ -19,18 +19,21 @@ SenMLPack dev1("dev1");
 char retFrameBuf[SENML_DOC_BUFFER_SIZE];
 sensorData_t sensorStruct;
 
-IPAddress server(192, 168, 1, 5);
+IPAddress server(192, 168, 0, 100);
 
-#if 1
+#if 0
 char ssid[] = "milo house";           // your network SSID (name)
 char pass[] = "1234567890a";           // your network password
+#else
+char ssid[] = "hitech";           // your network SSID (name)
+char pass[] = "12345678";           // your network password
 #endif
 
 int status = WL_IDLE_STATUS;   // the Wifi radio's status
 
 unsigned long previousMillis  = 0;
 unsigned long currentMillis   = 0;
-int interval = 1000;
+int interval = 5000;
 
 sensorData_t data;
 // Initialize the Ethernet client object
@@ -38,9 +41,9 @@ WiFiEspClient espClient;
 
 PubSubClient client(espClient);
 
-  SenMLFloatRecord rec1(KPN_SENML_TEMPERATURE, SENML_UNIT_DEGREES_CELSIUS, 0);
-  SenMLFloatRecord rec2(KPN_SENML_BREADTH, SENML_UNIT_BEATS, 0);
-  
+SenMLFloatRecord rec1(KPN_SENML_TEMPERATURE, SENML_UNIT_DEGREES_CELSIUS, 0);
+SenMLFloatRecord rec2(KPN_SENML_BREADTH, SENML_UNIT_BEATS, 0);
+
 void collectSensorData(sensorData_t* userbuf){
   if (userbuf != NULL) {
     userbuf->heartbeat = 60;
@@ -64,13 +67,13 @@ void checkAndSendingData() {
       
       // Doc du lieu cam bien
        collectSensorData(&sensorStruct);
-       Serial.println("Collect sensor data");
+      // Serial.println("Collect sensor data");
        
        // Tao frame data
        memset(retFrameBuf, 0x00, SENML_DOC_BUFFER_SIZE);
        makeSenMLFrame(&sensorStruct, retFrameBuf);
-       Serial.println("Created data frame");
-       Serial.println(retFrameBuf);
+     //  Serial.println("Created data frame");
+      // Serial.println(retFrameBuf);
 
       // TODO: move to outside
        const char* mqttMonitorTopic = "monitor";
@@ -84,11 +87,13 @@ void checkAndSendingData() {
       previousMillis = currentMillis;
   }
 }
+// Tao macro  trong C
+#define ESP_UART_BAUDRATE    (9600) // UL: unsigned long
 
 void setup() {
   // initialize serial for debugging
-  Serial.begin(115200);
-  Serial1.begin(115200);
+  Serial.begin(115200); // Serial log
+  Serial1.begin(ESP_UART_BAUDRATE); // Cong giao tiep ESP
 
   senMLSetLogger(&Serial);
   doc.add(&dev1);
@@ -119,6 +124,7 @@ void setup() {
   Serial.println("You're connected to the network");
 
   //connect to MQTT server
+  client.setSocketTimeout(60);
   client.setServer(server, 1883);
   client.setCallback(callback);
 #endif  
@@ -164,7 +170,7 @@ void reconnect() {
       // Once connected, publish an announcement...
       client.publish("command","hello world");
       // ... and resubscribe
-      client.subscribe("presence");
+      client.subscribe("control", 1);
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());

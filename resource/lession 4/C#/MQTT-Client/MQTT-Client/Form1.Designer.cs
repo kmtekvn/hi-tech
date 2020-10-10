@@ -47,6 +47,9 @@
             this.txtShow2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnSend = new System.Windows.Forms.Button();
+            this.txtTemperature = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -196,28 +199,28 @@
             // txtShow
             // 
             this.txtShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtShow.Location = new System.Drawing.Point(445, 192);
+            this.txtShow.Location = new System.Drawing.Point(445, 256);
             this.txtShow.Multiline = true;
             this.txtShow.Name = "txtShow";
             this.txtShow.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtShow.Size = new System.Drawing.Size(408, 197);
+            this.txtShow.Size = new System.Drawing.Size(408, 133);
             this.txtShow.TabIndex = 40;
             // 
             // txtShow2
             // 
             this.txtShow2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtShow2.Location = new System.Drawing.Point(10, 198);
+            this.txtShow2.Location = new System.Drawing.Point(10, 256);
             this.txtShow2.Multiline = true;
             this.txtShow2.Name = "txtShow2";
             this.txtShow2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtShow2.Size = new System.Drawing.Size(413, 191);
+            this.txtShow2.Size = new System.Drawing.Size(413, 133);
             this.txtShow2.TabIndex = 42;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(15, 170);
+            this.label3.Location = new System.Drawing.Point(10, 240);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 70;
@@ -228,17 +231,47 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(455, 170);
+            this.label6.Location = new System.Drawing.Point(453, 240);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 13);
             this.label6.TabIndex = 71;
             this.label6.Text = "Received Data";
+            // 
+            // btnSend
+            // 
+            this.btnSend.Location = new System.Drawing.Point(338, 191);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(85, 32);
+            this.btnSend.TabIndex = 72;
+            this.btnSend.Text = "Send";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click_1);
+            // 
+            // txtTemperature
+            // 
+            this.txtTemperature.Location = new System.Drawing.Point(135, 196);
+            this.txtTemperature.Name = "txtTemperature";
+            this.txtTemperature.Size = new System.Drawing.Size(173, 23);
+            this.txtTemperature.TabIndex = 73;
+            this.txtTemperature.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(30, 199);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(81, 16);
+            this.label7.TabIndex = 74;
+            this.label7.Text = "Temperature";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(873, 421);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtTemperature);
+            this.Controls.Add(this.btnSend);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtShow2);
@@ -281,6 +314,9 @@
         private System.Windows.Forms.Button btn_publish;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.TextBox txtTemperature;
+        private System.Windows.Forms.Label label7;
     }
 }
 

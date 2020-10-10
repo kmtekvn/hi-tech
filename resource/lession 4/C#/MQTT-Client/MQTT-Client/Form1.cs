@@ -83,6 +83,16 @@ namespace MQTT_Client
                 ctl.Text = myStr;
             }
         }
+        
+        private void ShowReceivedData(string txt)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(ShowReceivedData), new object[] { txt });
+                return;
+            }
+            txtTemperature.Text = txt;
+        }
 
         private void AppendTextBox(string txt)
         {
@@ -94,6 +104,16 @@ namespace MQTT_Client
             txtShow.Text += txt;
             txtShow.SelectionStart = txtShow.TextLength;
             txtShow.ScrollToCaret();
+        }
+
+        private void AppendTextBox2(string txt)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(AppendTextBox2), new object[] { txt });
+                return;
+            }
+            txtTemperature.Text = txt;
         }
 
         /* Start Display Mqtt Message */
@@ -114,22 +134,26 @@ namespace MQTT_Client
 
         private void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
-            string payload = Encoding.Default.GetString(e.Message);
-            AppendTextBox(payload);
+            ShowReceivedData(Encoding.Default.GetString(e.Message));
+            /*
+             *           AppendTextBox2(Encoding.Default.GetString(e.Message));
+                        string payload = Encoding.Default.GetString(e.Message);
+                        AppendTextBox(payload);
 
-            JsonTextReader reader = new JsonTextReader(new StringReader(payload));
+                        JsonTextReader reader = new JsonTextReader(new StringReader(payload));
 
-            while (reader.Read())
-            {
-                if (reader.Value != null)
-                {
-                    AppendTextBox(string.Format("Token: {0}, Value: {1}\r\n", reader.TokenType, reader.Value));
-                }
-                else
-                {
-                    AppendTextBox(string.Format("Token: {0}\r\n", reader.TokenType));
-                }
-            }
+                        while (reader.Read())
+                        {
+                            if (reader.Value != null)
+                            {
+                                AppendTextBox(string.Format("Token: {0}, Value: {1}\r\n", reader.TokenType, reader.Value));
+                            }
+                            else
+                            {
+                                AppendTextBox(string.Format("Token: {0}\r\n", reader.TokenType));
+                            }
+                        }
+            */
         }
 
         public Form1()
@@ -222,6 +246,21 @@ namespace MQTT_Client
         private void label3_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            btnSend.Text = "OK";
+        }
+
+        private void btnSend_Click_1(object sender, EventArgs e)
+        {
+            btnSend.Text = "Clicked";
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
