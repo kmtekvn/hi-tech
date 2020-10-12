@@ -6,6 +6,10 @@
 
 //#define TEST_SKIP_WIFI   
 
+      // TODO: move to outside
+       const char* mqttMonitorTopic = "arduino/monitor";
+
+          
 typedef struct {
   unsigned char heartbeat;
   unsigned int  temperature;
@@ -19,9 +23,10 @@ SenMLPack dev1("dev1");
 char retFrameBuf[SENML_DOC_BUFFER_SIZE];
 sensorData_t sensorStruct;
 
-IPAddress server(192, 168, 0, 100);
+IPAddress server(192, 168, 1, 5);
+//#define server "test.mosquitto.org"
 
-#if 0
+#if 1
 char ssid[] = "milo house";           // your network SSID (name)
 char pass[] = "1234567890a";           // your network password
 #else
@@ -52,7 +57,6 @@ void collectSensorData(sensorData_t* userbuf){
 }
 
 void makeSenMLFrame(sensorData_t* sensorStructP,  char* retFrameP) {
-
  rec1.set(sensorStructP->temperature);
  rec2.set(sensorStructP->heartbeat);
  doc.toJson(retFrameP, SENML_DOC_BUFFER_SIZE);  
@@ -64,7 +68,7 @@ void checkAndSendingData() {
   
   // check to see if the interval time is passed. 
   if (currentMillis - previousMillis >= interval == true ) {
-      
+#if 0      
       // Doc du lieu cam bien
        collectSensorData(&sensorStruct);
       // Serial.println("Collect sensor data");
@@ -75,14 +79,13 @@ void checkAndSendingData() {
      //  Serial.println("Created data frame");
       // Serial.println(retFrameBuf);
 
-      // TODO: move to outside
-       const char* mqttMonitorTopic = "monitor";
-          
+
        // Gui du lieu toi MQTT broker (PC)
       // strcpy(retFrameBuf, "[{\"bn\":\"gateway\"},{\"bn\":\"dev1\",\"n\":\"temperature\",\"u\":\"Cel\",\"v\":35.0},{\"n\":\"breadth\",\"u\":\"beats\",\"v\":60.0}]");
        
        client.publish(mqttMonitorTopic, retFrameBuf, strlen(retFrameBuf));
-       
+#endif
+      client.publish(mqttMonitorTopic, "hello", 5);
       // save the time when we displayed the string for the last time
       previousMillis = currentMillis;
   }
@@ -97,8 +100,6 @@ void setup() {
 
   senMLSetLogger(&Serial);
   doc.add(&dev1);
-
-
   dev1.add(&rec1);
   dev1.add(&rec2);
    
@@ -159,10 +160,8 @@ void loop() {
 void reconnect() {
   // Loop until we're reconnected
   while (!client.connected()) {
-    // Hien thi dia chi IP cua board
- //   Serial.print("My IP address:");
-  //  Serial.print(espClient.getIPAddress());
-
+    client.disconnect();
+    delay(1000);
     Serial.print("Attempting MQTT connection...");
     // Attempt to connect, just a name to identify the client
     if (client.connect("arduinoClient")) {
@@ -170,13 +169,13 @@ void reconnect() {
       // Once connected, publish an announcement...
       client.publish("command","hello world");
       // ... and resubscribe
-      client.subscribe("control", 1);
+      client.subscribe("arduino/control");
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
       Serial.println(" try again in 5 seconds");
       // Wait 5 seconds before retrying
-      delay(5000);
+      delay(2000);
     }
   }
 }

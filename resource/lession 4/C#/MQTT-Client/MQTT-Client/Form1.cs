@@ -14,7 +14,10 @@ using Excel = Microsoft.Office.Interop.Excel;
 using System.IO;
 using System.IO.Ports;
 using SenML.NET;
+using ChoETL;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 /*
  Libs: Install-Package Newtonsoft.Json
  */
@@ -26,7 +29,7 @@ namespace MQTT_Client
         private delegate void myUI_clearCallBack(TextBox ctl);
 
 
-        static String[] subTopic = { "monitor" };
+        static String[] subTopic = { "arduino/monitor" };
         static byte[] qosLevel = {0};
 
         //Variables for MQTT connection
@@ -131,29 +134,21 @@ namespace MQTT_Client
                 displayTextbox.AppendText(displayString + Environment.NewLine);
             }
         }
-
+      
         private void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
-            ShowReceivedData(Encoding.Default.GetString(e.Message));
-            /*
-             *           AppendTextBox2(Encoding.Default.GetString(e.Message));
-                        string payload = Encoding.Default.GetString(e.Message);
-                        AppendTextBox(payload);
-
-                        JsonTextReader reader = new JsonTextReader(new StringReader(payload));
-
-                        while (reader.Read())
-                        {
-                            if (reader.Value != null)
-                            {
-                                AppendTextBox(string.Format("Token: {0}, Value: {1}\r\n", reader.TokenType, reader.Value));
-                            }
-                            else
-                            {
-                                AppendTextBox(string.Format("Token: {0}\r\n", reader.TokenType));
-                            }
-                        }
-            */
+            string payload = Encoding.Default.GetString(e.Message);
+            AppendTextBox(payload);
+            JsonTextReader reader = new JsonTextReader(new StringReader(payload));
+            while (reader.Read())
+            {
+                if (reader.TokenType == JsonToken.StartObject)
+                {
+                    // Load each object from the stream and do something with it
+                    JObject obj = JObject.Load(reader);
+                    AppendTextBox(obj["id"] + " - " + obj["name"]);
+                }
+            }
         }
 
         public Form1()
@@ -166,21 +161,6 @@ namespace MQTT_Client
             this.AcceptButton = this.ConnectButton;
             Topic_pub_cmb.SelectedIndex = 1;
 
-            senMLInst.bn = "test";
-            AppendTextBox(test_senml_buf);
-            JsonTextReader reader = new JsonTextReader(new StringReader(test_senml_buf));
-
-            while (reader.Read())
-            {
-                if (reader.Value != null)
-                {
-                    AppendTextBox(string.Format("Token: {0}, Value: {1}\r\n", reader.TokenType, reader.Value));
-                }
-                else
-                {
-                    AppendTextBox(string.Format("Token: {0}\r\n", reader.TokenType));
-                }
-            }
         }
 
         private void Form1_Closing(object sender, FormClosingEventArgs e)
@@ -235,12 +215,7 @@ namespace MQTT_Client
 
         private void btn_publish_Click(object sender, EventArgs e)
         {
-            byte[] pubData = new byte[5];
-            for (int i = 0;i < 5; i++){
-                pubData[i] = (byte)'A';
-            }
-
-            client.Publish("control", pubData);
+            client.Publish("arduino/control", Encoding.UTF8.GetBytes(PubMessageTextBox.Text));
         }
 
         private void label3_Click(object sender, EventArgs e)
