@@ -138,15 +138,20 @@ namespace MQTT_Client
         private void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
             string payload = Encoding.Default.GetString(e.Message);
-            AppendTextBox(payload);
             JsonTextReader reader = new JsonTextReader(new StringReader(payload));
             while (reader.Read())
             {
                 if (reader.TokenType == JsonToken.StartObject)
                 {
-                    // Load each object from the stream and do something with it
                     JObject obj = JObject.Load(reader);
-                    AppendTextBox(obj["id"] + " - " + obj["name"]);
+                    if ((string)obj["n"] == "temperature")
+                    {
+                        AppendTextBox("Temperature: " + (string)obj["v"] + "\r\n");
+                    }
+                    else if ((string)obj["n"] == "breadth")
+                    {
+                        AppendTextBox("Hearbeat: " + (string)obj["v"] + "\r\n");
+                    }
                 }
             }
         }
