@@ -4,6 +4,12 @@
 #include <PubSubClient.h>
 #include <kpn_senml.h>
 
+#include <movingAvg.h>                  // https://github.com/JChristensen/movingAvg
+#include "MAX30105.h"  //Get it here: http://librarymanager/All#SparkFun_MAX30105
+MAX30105 particleSensor;
+
+movingAvg tempSensor(10);                // define the moving average object
+
 //#define TEST_SKIP_WIFI   
 
       // TODO: move to outside
@@ -50,9 +56,11 @@ SenMLFloatRecord rec1(KPN_SENML_TEMPERATURE, SENML_UNIT_DEGREES_CELSIUS, 0);
 SenMLFloatRecord rec2(KPN_SENML_BREADTH, SENML_UNIT_BEATS, 0);
 
 void collectSensorData(sensorData_t* userbuf){
+  int temperature = particleSensor.readTemperature()*10;
+  int temperature_avg = tempSensor.reading(temperature);  
   if (userbuf != NULL) {
     userbuf->heartbeat = 60;
-    userbuf->temperature = 35;
+    userbuf->temperature = temperature_avg;
   }
 }
 
@@ -129,6 +137,19 @@ void setup() {
   client.setServer(server, 1883);
   client.setCallback(callback);
 #endif  
+
+
+  tempSensor.begin();
+  // Initialize sensor
+  if (particleSensor.begin(Wire, I2C_SPEED_FAST) == false) //Use default I2C port, 400kHz speed
+  {
+    Serial.println("MAX30105 was not found. Please check wiring/power. ");
+    while (1);
+  }
+  particleSensor.setup(); //Configure sensor. Use 25mA for LED drive
+
+  particleSensor.enableDIETEMPRDY(); //Enable the temp ready interrupt. This is required.
+
 }
 
 //print any message received for subscribed topic

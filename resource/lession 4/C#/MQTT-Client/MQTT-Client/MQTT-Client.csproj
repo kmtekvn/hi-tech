@@ -59,6 +59,14 @@
     <Reference Include="ChoETL.JSON, Version=1.2.1.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ChoETL.JSON.1.2.1.1\lib\net45\ChoETL.JSON.dll</HintPath>
     </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=10.0.0.0, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DotNetBar for Windows Forms\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.Instrumentation, Version=10.0.0.0, Culture=neutral, PublicKeyToken=bc4a9d761ea44ef0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DotNetBar for Windows Forms\DevComponents.Instrumentation.dll</HintPath>
+    </Reference>
     <Reference Include="M2Mqtt">
       <HintPath>..\M2Mqtt.dll</HintPath>
     </Reference>

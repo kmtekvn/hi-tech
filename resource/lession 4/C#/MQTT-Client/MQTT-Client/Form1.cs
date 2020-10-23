@@ -17,6 +17,8 @@ using SenML.NET;
 using ChoETL;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using DevComponents.DotNetBar;
+using DevComponents.Instrumentation;
 
 /*
  Libs: Install-Package Newtonsoft.Json
@@ -31,6 +33,13 @@ namespace MQTT_Client
 
         static String[] subTopic = { "arduino/monitor" };
         static byte[] qosLevel = {0};
+
+        static UInt64 gauge_value = 0;
+        GaugePointer pointer = new GaugePointer();
+        GaugeCircularScale scale = new GaugeCircularScale();
+
+        GaugePointer linear_pointer = new GaugePointer();
+        GaugeLinearScale linear_scale = new GaugeLinearScale();
 
         //Variables for MQTT connection
         static MqttClient client;
@@ -138,6 +147,7 @@ namespace MQTT_Client
         private void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
             string payload = Encoding.Default.GetString(e.Message);
+
             JsonTextReader reader = new JsonTextReader(new StringReader(payload));
             while (reader.Read())
             {
@@ -165,7 +175,21 @@ namespace MQTT_Client
         {
             this.AcceptButton = this.ConnectButton;
             Topic_pub_cmb.SelectedIndex = 1;
+         
+            pointer.Name = "MyPointer";
+            pointer.Style = PointerStyle.Needle;
+            scale.Name = "MyScale";
+            scale.Pointers.Add(pointer);
+            gaugeHeartBeat.CircularScales.Add(scale);
 
+
+            // Set up linear
+            linear_pointer.Name = "MyLinearPointer";
+            linear_pointer.Style = PointerStyle.Thermometer;
+
+            linear_scale.Name = "MyLinearScale";
+            linear_scale.Pointers.Add(linear_pointer);
+            gaugeTemperature.LinearScales.Add(linear_scale);
         }
 
         private void Form1_Closing(object sender, FormClosingEventArgs e)
@@ -217,6 +241,7 @@ namespace MQTT_Client
                 ConnectButton.Text = "Connect";
             }
         }
+        
 
         private void btn_publish_Click(object sender, EventArgs e)
         {
@@ -241,6 +266,24 @@ namespace MQTT_Client
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void tmrUpdateUI_Tick(object sender, EventArgs e)
+        {
+            gaugeHeartBeat.SetPointerValue(pointer.Name, gauge_value);
+            gaugeTemperature.SetPointerValue(linear_pointer.Name, gauge_value);
+
+            gauge_value += 1;
+        }
+
+        private void knobPWM_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void knobPWM_CursorChanged(object sender, EventArgs e)
+        {
+            btnSend.Text = "Knod changed" + knobPWM.Value;
         }
     }
 }

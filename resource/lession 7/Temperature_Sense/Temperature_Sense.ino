@@ -24,12 +24,12 @@
 #include "MAX30105.h"  //Get it here: http://librarymanager/All#SparkFun_MAX30105
 MAX30105 particleSensor;
 
-movingAvg tempSensor(4);                // define the moving average object
+movingAvg tempSensor(10);                // define the moving average object
 
 void setup()
 {
   Serial.begin(115200);
-  Serial.println("Initializing...");
+//  Serial.println("Initializing...");
 
   tempSensor.begin();
   // Initialize sensor
@@ -41,18 +41,24 @@ void setup()
 
   //The LEDs are very low power and won't affect the temp reading much but
   //you may want to turn off the LEDs to avoid any local heating
-  particleSensor.setup(0); //Configure sensor. Turn off LEDs
-  //particleSensor.setup(); //Configure sensor. Use 25mA for LED drive
+  //particleSensor.setup(0); //Configure sensor. Turn off LEDs
+  particleSensor.setup(); //Configure sensor. Use 25mA for LED drive
 
   particleSensor.enableDIETEMPRDY(); //Enable the temp ready interrupt. This is required.
+
+  delay(5);
 }
 
 void loop()
 {
-  float temperature = particleSensor.readTemperature();
-  float temperature_avg = tempSensor.reading(temperature);    // calculate the moving average
-  //Serial.print("temperatureC=");
-  Serial.print(temperature);
-  Serial.print(',');
-  Serial.println(temperature_avg);
+  int temperature = particleSensor.readTemperature()*10;
+
+  {
+    int temperature_avg = tempSensor.reading(temperature);    // calculate the moving average
+    //Serial.print("temperatureC=");
+    Serial.print(temperature);
+    Serial.print(',');
+    Serial.println(temperature_avg);
+    delay(500);
+  }
 }

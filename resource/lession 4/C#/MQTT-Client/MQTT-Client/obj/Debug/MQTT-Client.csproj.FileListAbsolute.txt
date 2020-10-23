@@ -130,3 +130,7 @@ D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\bin\Debug\System.C
 D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\bin\Debug\System.Configuration.ConfigurationManager.dll
 D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\bin\Debug\System.Data.SqlClient.dll
 D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\obj\Debug\MQTT-Client.exe.config
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\bin\Debug\DevComponents.DotNetBar2.dll
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\bin\Debug\DevComponents.Instrumentation.dll
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\bin\Debug\DevComponents.DotNetBar2.xml
+D:\Hi-Tech\Repo\resource\lession 4\C#\MQTT-Client\MQTT-Client\bin\Debug\DevComponents.Instrumentation.xml
