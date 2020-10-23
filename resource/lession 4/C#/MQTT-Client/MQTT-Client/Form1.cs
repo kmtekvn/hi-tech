@@ -35,11 +35,6 @@ namespace MQTT_Client
         static byte[] qosLevel = {0};
 
         static UInt64 gauge_value = 0;
-        GaugePointer pointer = new GaugePointer();
-        GaugeCircularScale scale = new GaugeCircularScale();
-
-        GaugePointer linear_pointer = new GaugePointer();
-        GaugeLinearScale linear_scale = new GaugeLinearScale();
 
         //Variables for MQTT connection
         static MqttClient client;
@@ -103,7 +98,7 @@ namespace MQTT_Client
                 this.Invoke(new Action<string>(ShowReceivedData), new object[] { txt });
                 return;
             }
-            txtTemperature.Text = txt;
+            //txtTemperature.Text = txt;
         }
 
         private void AppendTextBox(string txt)
@@ -113,9 +108,7 @@ namespace MQTT_Client
                 this.Invoke(new Action<string>(AppendTextBox), new object[] { txt });
                 return;
             }
-            txtShow.Text += txt;
-            txtShow.SelectionStart = txtShow.TextLength;
-            txtShow.ScrollToCaret();
+            
         }
 
         private void AppendTextBox2(string txt)
@@ -125,7 +118,7 @@ namespace MQTT_Client
                 this.Invoke(new Action<string>(AppendTextBox2), new object[] { txt });
                 return;
             }
-            txtTemperature.Text = txt;
+            //txtTemperature.Text = txt;
         }
 
         /* Start Display Mqtt Message */
@@ -176,20 +169,7 @@ namespace MQTT_Client
             this.AcceptButton = this.ConnectButton;
             Topic_pub_cmb.SelectedIndex = 1;
          
-            pointer.Name = "MyPointer";
-            pointer.Style = PointerStyle.Needle;
-            scale.Name = "MyScale";
-            scale.Pointers.Add(pointer);
-            gaugeHeartBeat.CircularScales.Add(scale);
-
-
-            // Set up linear
-            linear_pointer.Name = "MyLinearPointer";
-            linear_pointer.Style = PointerStyle.Thermometer;
-
-            linear_scale.Name = "MyLinearScale";
-            linear_scale.Pointers.Add(linear_pointer);
-            gaugeTemperature.LinearScales.Add(linear_scale);
+          
         }
 
         private void Form1_Closing(object sender, FormClosingEventArgs e)
@@ -270,8 +250,8 @@ namespace MQTT_Client
 
         private void tmrUpdateUI_Tick(object sender, EventArgs e)
         {
-            gaugeHeartBeat.SetPointerValue(pointer.Name, gauge_value);
-            gaugeTemperature.SetPointerValue(linear_pointer.Name, gauge_value);
+            gaugeHeartBeat.SetPointerValue(gaugeHeartBeat.CircularScales[0].Pointers[0].Name, gauge_value);
+            gaugeTemperature.SetPointerValue(gaugeTemperature.LinearScales[0].Pointers[0].Name, gauge_value);
 
             gauge_value += 1;
         }

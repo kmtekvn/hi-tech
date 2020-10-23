@@ -29,21 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevComponents.Instrumentation.GradientFillColor gradientFillColor9 = new DevComponents.Instrumentation.GradientFillColor();
-            DevComponents.Instrumentation.GradientFillColor gradientFillColor10 = new DevComponents.Instrumentation.GradientFillColor();
-            DevComponents.Instrumentation.GaugeText gaugeText5 = new DevComponents.Instrumentation.GaugeText();
+            DevComponents.Instrumentation.GradientFillColor gradientFillColor1 = new DevComponents.Instrumentation.GradientFillColor();
+            DevComponents.Instrumentation.GradientFillColor gradientFillColor2 = new DevComponents.Instrumentation.GradientFillColor();
+            DevComponents.Instrumentation.GaugeText gaugeText1 = new DevComponents.Instrumentation.GaugeText();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            DevComponents.Instrumentation.GaugeText gaugeText6 = new DevComponents.Instrumentation.GaugeText();
-            DevComponents.Instrumentation.GaugeLinearScale gaugeLinearScale5 = new DevComponents.Instrumentation.GaugeLinearScale();
-            DevComponents.Instrumentation.GaugePointer gaugePointer5 = new DevComponents.Instrumentation.GaugePointer();
-            DevComponents.Instrumentation.GaugeSection gaugeSection5 = new DevComponents.Instrumentation.GaugeSection();
-            DevComponents.Instrumentation.GaugeLinearScale gaugeLinearScale6 = new DevComponents.Instrumentation.GaugeLinearScale();
-            DevComponents.Instrumentation.GaugeCircularScale gaugeCircularScale3 = new DevComponents.Instrumentation.GaugeCircularScale();
-            DevComponents.Instrumentation.GaugePointer gaugePointer6 = new DevComponents.Instrumentation.GaugePointer();
-            DevComponents.Instrumentation.GaugeRange gaugeRange3 = new DevComponents.Instrumentation.GaugeRange();
-            DevComponents.Instrumentation.GaugeSection gaugeSection6 = new DevComponents.Instrumentation.GaugeSection();
-            DevComponents.Instrumentation.GradientFillColor gradientFillColor11 = new DevComponents.Instrumentation.GradientFillColor();
-            DevComponents.Instrumentation.GradientFillColor gradientFillColor12 = new DevComponents.Instrumentation.GradientFillColor();
+            DevComponents.Instrumentation.GaugeLinearScale gaugeLinearScale1 = new DevComponents.Instrumentation.GaugeLinearScale();
+            DevComponents.Instrumentation.GaugePointer gaugePointer1 = new DevComponents.Instrumentation.GaugePointer();
+            DevComponents.Instrumentation.GaugeSection gaugeSection1 = new DevComponents.Instrumentation.GaugeSection();
+            DevComponents.Instrumentation.GaugeCircularScale gaugeCircularScale1 = new DevComponents.Instrumentation.GaugeCircularScale();
+            DevComponents.Instrumentation.GaugePointer gaugePointer2 = new DevComponents.Instrumentation.GaugePointer();
+            DevComponents.Instrumentation.GaugeRange gaugeRange1 = new DevComponents.Instrumentation.GaugeRange();
+            DevComponents.Instrumentation.GaugeSection gaugeSection2 = new DevComponents.Instrumentation.GaugeSection();
+            DevComponents.Instrumentation.GradientFillColor gradientFillColor3 = new DevComponents.Instrumentation.GradientFillColor();
+            DevComponents.Instrumentation.GradientFillColor gradientFillColor4 = new DevComponents.Instrumentation.GradientFillColor();
             this.label4 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.ConnectButton = new System.Windows.Forms.Button();
@@ -57,21 +55,21 @@
             this.btn_publish = new System.Windows.Forms.Button();
             this.PubMessageTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtShow = new System.Windows.Forms.TextBox();
             this.tmrUpdateUI = new System.Windows.Forms.Timer(this.components);
-            this.txtShow2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.btnSend = new System.Windows.Forms.Button();
-            this.txtTemperature = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.gaugeTemperature = new DevComponents.Instrumentation.GaugeControl();
             this.knobPWM = new DevComponents.Instrumentation.KnobControl();
             this.gaugeHeartBeat = new DevComponents.Instrumentation.GaugeControl();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDbgMsg = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gaugeTemperature)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gaugeHeartBeat)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
@@ -129,8 +127,6 @@
             this.groupBox1.Controls.Add(this.HostCbb);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtTemperature);
-            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.Controller_ID_txt);
             this.groupBox1.Controls.Add(this.ConnectButton);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -139,7 +135,7 @@
             this.groupBox1.Size = new System.Drawing.Size(855, 47);
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Connect";
+            this.groupBox1.Text = "Connection";
             // 
             // HostCbb
             // 
@@ -218,56 +214,15 @@
             this.label5.TabIndex = 33;
             this.label5.Text = "Topic";
             // 
-            // txtShow
-            // 
-            this.txtShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtShow.Location = new System.Drawing.Point(688, 178);
-            this.txtShow.Multiline = true;
-            this.txtShow.Name = "txtShow";
-            this.txtShow.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtShow.Size = new System.Drawing.Size(171, 229);
-            this.txtShow.TabIndex = 40;
-            // 
             // tmrUpdateUI
             // 
             this.tmrUpdateUI.Enabled = true;
             this.tmrUpdateUI.Interval = 1000;
             this.tmrUpdateUI.Tick += new System.EventHandler(this.tmrUpdateUI_Tick);
             // 
-            // txtShow2
-            // 
-            this.txtShow2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtShow2.Location = new System.Drawing.Point(10, 178);
-            this.txtShow2.Multiline = true;
-            this.txtShow2.Name = "txtShow2";
-            this.txtShow2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtShow2.Size = new System.Drawing.Size(155, 211);
-            this.txtShow2.TabIndex = 42;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 152);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
-            this.label3.TabIndex = 70;
-            this.label3.Text = "Sent Data";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(705, 152);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 13);
-            this.label6.TabIndex = 71;
-            this.label6.Text = "Received Data";
-            // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(514, 357);
+            this.btnSend.Location = new System.Drawing.Point(152, 380);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(98, 50);
             this.btnSend.TabIndex = 72;
@@ -275,120 +230,75 @@
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click_1);
             // 
-            // txtTemperature
-            // 
-            this.txtTemperature.Location = new System.Drawing.Point(569, 16);
-            this.txtTemperature.Name = "txtTemperature";
-            this.txtTemperature.Size = new System.Drawing.Size(50, 19);
-            this.txtTemperature.TabIndex = 73;
-            this.txtTemperature.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(487, 20);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 13);
-            this.label7.TabIndex = 74;
-            this.label7.Text = "Temperature";
-            // 
             // gaugeTemperature
             // 
-            gradientFillColor9.Color1 = System.Drawing.Color.Gainsboro;
-            gradientFillColor9.Color2 = System.Drawing.Color.DarkGray;
-            this.gaugeTemperature.Frame.BackColor = gradientFillColor9;
-            gradientFillColor10.BorderColor = System.Drawing.Color.Gainsboro;
-            gradientFillColor10.BorderWidth = 1;
-            gradientFillColor10.Color1 = System.Drawing.Color.White;
-            gradientFillColor10.Color2 = System.Drawing.Color.DimGray;
-            this.gaugeTemperature.Frame.FrameColor = gradientFillColor10;
-            gaugeText5.BackColor.BorderColor = System.Drawing.Color.Black;
-            gaugeText5.Location = ((System.Drawing.PointF)(resources.GetObject("gaugeText5.Location")));
-            gaugeText5.Name = "Text1";
-            gaugeText5.Text = "C°";
-            gaugeText6.BackColor.BorderColor = System.Drawing.Color.Black;
-            gaugeText6.Location = ((System.Drawing.PointF)(resources.GetObject("gaugeText6.Location")));
-            gaugeText6.Name = "Text2";
-            gaugeText6.Text = "F°";
+            gradientFillColor1.Color1 = System.Drawing.Color.Gainsboro;
+            gradientFillColor1.Color2 = System.Drawing.Color.DarkGray;
+            this.gaugeTemperature.Frame.BackColor = gradientFillColor1;
+            gradientFillColor2.BorderColor = System.Drawing.Color.Gainsboro;
+            gradientFillColor2.BorderWidth = 1;
+            gradientFillColor2.Color1 = System.Drawing.Color.White;
+            gradientFillColor2.Color2 = System.Drawing.Color.DimGray;
+            this.gaugeTemperature.Frame.FrameColor = gradientFillColor2;
+            gaugeText1.BackColor.BorderColor = System.Drawing.Color.Black;
+            gaugeText1.Location = ((System.Drawing.PointF)(resources.GetObject("gaugeText1.Location")));
+            gaugeText1.Name = "Text1";
+            gaugeText1.Size = new System.Drawing.SizeF(0.5F, 0.5F);
+            gaugeText1.Text = "C°";
             this.gaugeTemperature.GaugeItems.AddRange(new DevComponents.Instrumentation.GaugeItem[] {
-            gaugeText5,
-            gaugeText6});
-            gaugeLinearScale5.Labels.FormatString = "0°";
-            gaugeLinearScale5.Location = ((System.Drawing.PointF)(resources.GetObject("gaugeLinearScale5.Location")));
-            gaugeLinearScale5.MajorTickMarks.Layout.Placement = DevComponents.Instrumentation.DisplayPlacement.Near;
-            gaugeLinearScale5.MajorTickMarks.Layout.Style = DevComponents.Instrumentation.GaugeMarkerStyle.Rectangle;
-            gaugeLinearScale5.MajorTickMarks.Layout.Width = 0.008F;
-            gaugeLinearScale5.MaxPin.Name = "MaxPin";
-            gaugeLinearScale5.MaxPin.Visible = false;
-            gaugeLinearScale5.MaxValue = 40D;
-            gaugeLinearScale5.MinorTickMarks.Layout.Placement = DevComponents.Instrumentation.DisplayPlacement.Near;
-            gaugeLinearScale5.MinorTickMarks.Layout.Width = 0.016F;
-            gaugeLinearScale5.MinPin.Name = "MinPin";
-            gaugeLinearScale5.MinPin.Visible = false;
-            gaugeLinearScale5.MinValue = -30D;
-            gaugeLinearScale5.Name = "Scale1";
-            gaugePointer5.BulbOffset = 0.026F;
-            gaugePointer5.BulbSize = 0.132F;
-            gaugePointer5.CapFillColor.BorderColor = System.Drawing.Color.DimGray;
-            gaugePointer5.CapFillColor.BorderWidth = 1;
-            gaugePointer5.CapFillColor.Color1 = System.Drawing.Color.WhiteSmoke;
-            gaugePointer5.CapFillColor.Color2 = System.Drawing.Color.DimGray;
-            gaugePointer5.FillColor.Color1 = System.Drawing.Color.Red;
-            gaugePointer5.Name = "Pointer1";
-            gaugePointer5.Style = DevComponents.Instrumentation.PointerStyle.Thermometer;
-            gaugePointer5.ThermoBackColor.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            gaugePointer5.Value = 12D;
-            gaugePointer5.Width = 0.1F;
-            gaugeLinearScale5.Pointers.AddRange(new DevComponents.Instrumentation.GaugePointer[] {
-            gaugePointer5});
-            gaugeSection5.FillColor.Color1 = System.Drawing.Color.SteelBlue;
-            gaugeSection5.FillColor.Color2 = System.Drawing.Color.LightCyan;
-            gaugeSection5.FillColor.GradientFillType = DevComponents.Instrumentation.GradientFillType.HorizontalCenter;
-            gaugeSection5.Name = "Section1";
-            gaugeLinearScale5.Sections.AddRange(new DevComponents.Instrumentation.GaugeSection[] {
-            gaugeSection5});
-            gaugeLinearScale5.Width = 0.1F;
-            gaugeLinearScale6.Labels.FormatString = "0°";
-            gaugeLinearScale6.Labels.Layout.Placement = DevComponents.Instrumentation.DisplayPlacement.Far;
-            gaugeLinearScale6.Labels.ShowMaxLabel = false;
-            gaugeLinearScale6.Labels.ShowMinLabel = false;
-            gaugeLinearScale6.Location = ((System.Drawing.PointF)(resources.GetObject("gaugeLinearScale6.Location")));
-            gaugeLinearScale6.MajorTickMarks.Interval = 20D;
-            gaugeLinearScale6.MajorTickMarks.IntervalOffset = 2D;
-            gaugeLinearScale6.MajorTickMarks.Layout.Placement = DevComponents.Instrumentation.DisplayPlacement.Far;
-            gaugeLinearScale6.MajorTickMarks.Layout.Style = DevComponents.Instrumentation.GaugeMarkerStyle.Rectangle;
-            gaugeLinearScale6.MajorTickMarks.Layout.Width = 0.008F;
-            gaugeLinearScale6.MaxPin.Name = "MaxPin";
-            gaugeLinearScale6.MaxPin.Visible = false;
-            gaugeLinearScale6.MaxValue = 104D;
-            gaugeLinearScale6.MinorTickMarks.Interval = 4D;
-            gaugeLinearScale6.MinorTickMarks.IntervalOffset = 2D;
-            gaugeLinearScale6.MinorTickMarks.Layout.Placement = DevComponents.Instrumentation.DisplayPlacement.Far;
-            gaugeLinearScale6.MinorTickMarks.Layout.Width = 0.016F;
-            gaugeLinearScale6.MinPin.Name = "MinPin";
-            gaugeLinearScale6.MinPin.Visible = false;
-            gaugeLinearScale6.MinValue = -22D;
-            gaugeLinearScale6.Name = "Scale2";
-            gaugeLinearScale6.Width = 0.1F;
+            gaugeText1});
+            gaugeLinearScale1.Labels.FormatString = "0°";
+            gaugeLinearScale1.Location = ((System.Drawing.PointF)(resources.GetObject("gaugeLinearScale1.Location")));
+            gaugeLinearScale1.MajorTickMarks.Layout.Placement = DevComponents.Instrumentation.DisplayPlacement.Near;
+            gaugeLinearScale1.MajorTickMarks.Layout.Style = DevComponents.Instrumentation.GaugeMarkerStyle.Rectangle;
+            gaugeLinearScale1.MajorTickMarks.Layout.Width = 0.008F;
+            gaugeLinearScale1.MaxPin.Name = "MaxPin";
+            gaugeLinearScale1.MaxPin.Visible = false;
+            gaugeLinearScale1.MaxValue = 40D;
+            gaugeLinearScale1.MinorTickMarks.Layout.Placement = DevComponents.Instrumentation.DisplayPlacement.Near;
+            gaugeLinearScale1.MinorTickMarks.Layout.Width = 0.016F;
+            gaugeLinearScale1.MinPin.Name = "MinPin";
+            gaugeLinearScale1.MinPin.Visible = false;
+            gaugeLinearScale1.Name = "Scale1";
+            gaugePointer1.BulbOffset = 0.026F;
+            gaugePointer1.BulbSize = 0.132F;
+            gaugePointer1.CapFillColor.BorderColor = System.Drawing.Color.DimGray;
+            gaugePointer1.CapFillColor.BorderWidth = 1;
+            gaugePointer1.CapFillColor.Color1 = System.Drawing.Color.WhiteSmoke;
+            gaugePointer1.CapFillColor.Color2 = System.Drawing.Color.DimGray;
+            gaugePointer1.FillColor.Color1 = System.Drawing.Color.Red;
+            gaugePointer1.Name = "Pointer1";
+            gaugePointer1.Style = DevComponents.Instrumentation.PointerStyle.Thermometer;
+            gaugePointer1.ThermoBackColor.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            gaugePointer1.Value = 12D;
+            gaugePointer1.Width = 0.1F;
+            gaugeLinearScale1.Pointers.AddRange(new DevComponents.Instrumentation.GaugePointer[] {
+            gaugePointer1});
+            gaugeSection1.FillColor.Color1 = System.Drawing.Color.SteelBlue;
+            gaugeSection1.FillColor.Color2 = System.Drawing.Color.LightCyan;
+            gaugeSection1.FillColor.GradientFillType = DevComponents.Instrumentation.GradientFillType.HorizontalCenter;
+            gaugeSection1.Name = "Section1";
+            gaugeLinearScale1.Sections.AddRange(new DevComponents.Instrumentation.GaugeSection[] {
+            gaugeSection1});
+            gaugeLinearScale1.Width = 0.1F;
             this.gaugeTemperature.LinearScales.AddRange(new DevComponents.Instrumentation.GaugeLinearScale[] {
-            gaugeLinearScale5,
-            gaugeLinearScale6});
-            this.gaugeTemperature.Location = new System.Drawing.Point(171, 168);
+            gaugeLinearScale1});
+            this.gaugeTemperature.Location = new System.Drawing.Point(10, 22);
             this.gaugeTemperature.Name = "gaugeTemperature";
-            this.gaugeTemperature.Size = new System.Drawing.Size(293, 56);
+            this.gaugeTemperature.Size = new System.Drawing.Size(404, 71);
             this.gaugeTemperature.TabIndex = 75;
             this.gaugeTemperature.Text = "gaugeTemperature";
             // 
             // knobPWM
             // 
-            this.knobPWM.Location = new System.Drawing.Point(467, 168);
+            this.knobPWM.Location = new System.Drawing.Point(24, 22);
             this.knobPWM.MinValue = new decimal(new int[] {
             0,
             0,
             0,
             0});
             this.knobPWM.Name = "knobPWM";
-            this.knobPWM.Size = new System.Drawing.Size(183, 183);
+            this.knobPWM.Size = new System.Drawing.Size(350, 336);
             this.knobPWM.TabIndex = 76;
             this.knobPWM.Text = "knobPWM";
             this.knobPWM.CursorChanged += new System.EventHandler(this.knobPWM_CursorChanged);
@@ -396,66 +306,102 @@
             // 
             // gaugeHeartBeat
             // 
-            gaugeCircularScale3.MaxPin.Name = "MaxPin";
-            gaugeCircularScale3.MinPin.Name = "MinPin";
-            gaugeCircularScale3.Name = "Scale1";
-            gaugePointer6.CapFillColor.BorderColor = System.Drawing.Color.DimGray;
-            gaugePointer6.CapFillColor.BorderWidth = 1;
-            gaugePointer6.CapFillColor.Color1 = System.Drawing.Color.WhiteSmoke;
-            gaugePointer6.CapFillColor.Color2 = System.Drawing.Color.DimGray;
-            gaugePointer6.FillColor.BorderColor = System.Drawing.Color.DimGray;
-            gaugePointer6.FillColor.BorderWidth = 1;
-            gaugePointer6.FillColor.Color1 = System.Drawing.Color.WhiteSmoke;
-            gaugePointer6.FillColor.Color2 = System.Drawing.Color.Red;
-            gaugePointer6.Length = 0.358F;
-            gaugePointer6.Name = "Pointer1";
-            gaugePointer6.Style = DevComponents.Instrumentation.PointerStyle.Needle;
-            gaugeCircularScale3.Pointers.AddRange(new DevComponents.Instrumentation.GaugePointer[] {
-            gaugePointer6});
-            gaugeRange3.FillColor.BorderColor = System.Drawing.Color.DimGray;
-            gaugeRange3.FillColor.BorderWidth = 1;
-            gaugeRange3.FillColor.Color1 = System.Drawing.Color.Lime;
-            gaugeRange3.FillColor.Color2 = System.Drawing.Color.Red;
-            gaugeRange3.Name = "Range1";
-            gaugeRange3.ScaleOffset = 0.28F;
-            gaugeRange3.StartValue = 70D;
-            gaugeCircularScale3.Ranges.AddRange(new DevComponents.Instrumentation.GaugeRange[] {
-            gaugeRange3});
-            gaugeSection6.FillColor.Color1 = System.Drawing.Color.CornflowerBlue;
-            gaugeSection6.FillColor.Color2 = System.Drawing.Color.Purple;
-            gaugeSection6.Name = "Section1";
-            gaugeCircularScale3.Sections.AddRange(new DevComponents.Instrumentation.GaugeSection[] {
-            gaugeSection6});
+            gaugeCircularScale1.MaxPin.Name = "MaxPin";
+            gaugeCircularScale1.MaxValue = 150D;
+            gaugeCircularScale1.MinPin.Name = "MinPin";
+            gaugeCircularScale1.Name = "Scale1";
+            gaugePointer2.CapFillColor.BorderColor = System.Drawing.Color.DimGray;
+            gaugePointer2.CapFillColor.BorderWidth = 1;
+            gaugePointer2.CapFillColor.Color1 = System.Drawing.Color.WhiteSmoke;
+            gaugePointer2.CapFillColor.Color2 = System.Drawing.Color.DimGray;
+            gaugePointer2.FillColor.BorderColor = System.Drawing.Color.DimGray;
+            gaugePointer2.FillColor.BorderWidth = 1;
+            gaugePointer2.FillColor.Color1 = System.Drawing.Color.WhiteSmoke;
+            gaugePointer2.FillColor.Color2 = System.Drawing.Color.Red;
+            gaugePointer2.Length = 0.358F;
+            gaugePointer2.Name = "Pointer1";
+            gaugePointer2.Style = DevComponents.Instrumentation.PointerStyle.Needle;
+            gaugeCircularScale1.Pointers.AddRange(new DevComponents.Instrumentation.GaugePointer[] {
+            gaugePointer2});
+            gaugeRange1.FillColor.BorderColor = System.Drawing.Color.DimGray;
+            gaugeRange1.FillColor.BorderWidth = 1;
+            gaugeRange1.FillColor.Color1 = System.Drawing.Color.Lime;
+            gaugeRange1.FillColor.Color2 = System.Drawing.Color.Red;
+            gaugeRange1.Name = "Range1";
+            gaugeRange1.ScaleOffset = 0.28F;
+            gaugeRange1.StartValue = 70D;
+            gaugeCircularScale1.Ranges.AddRange(new DevComponents.Instrumentation.GaugeRange[] {
+            gaugeRange1});
+            gaugeSection2.FillColor.Color1 = System.Drawing.Color.CornflowerBlue;
+            gaugeSection2.FillColor.Color2 = System.Drawing.Color.Purple;
+            gaugeSection2.Name = "Section1";
+            gaugeCircularScale1.Sections.AddRange(new DevComponents.Instrumentation.GaugeSection[] {
+            gaugeSection2});
             this.gaugeHeartBeat.CircularScales.AddRange(new DevComponents.Instrumentation.GaugeCircularScale[] {
-            gaugeCircularScale3});
-            gradientFillColor11.Color1 = System.Drawing.Color.Gainsboro;
-            gradientFillColor11.Color2 = System.Drawing.Color.DarkGray;
-            this.gaugeHeartBeat.Frame.BackColor = gradientFillColor11;
-            gradientFillColor12.BorderColor = System.Drawing.Color.Gainsboro;
-            gradientFillColor12.BorderWidth = 1;
-            gradientFillColor12.Color1 = System.Drawing.Color.White;
-            gradientFillColor12.Color2 = System.Drawing.Color.DimGray;
-            this.gaugeHeartBeat.Frame.FrameColor = gradientFillColor12;
+            gaugeCircularScale1});
+            gradientFillColor3.Color1 = System.Drawing.Color.Gainsboro;
+            gradientFillColor3.Color2 = System.Drawing.Color.DarkGray;
+            this.gaugeHeartBeat.Frame.BackColor = gradientFillColor3;
+            gradientFillColor4.BorderColor = System.Drawing.Color.Gainsboro;
+            gradientFillColor4.BorderWidth = 1;
+            gradientFillColor4.Color1 = System.Drawing.Color.White;
+            gradientFillColor4.Color2 = System.Drawing.Color.DimGray;
+            this.gaugeHeartBeat.Frame.FrameColor = gradientFillColor4;
             this.gaugeHeartBeat.Frame.Style = DevComponents.Instrumentation.GaugeFrameStyle.Circular;
-            this.gaugeHeartBeat.Location = new System.Drawing.Point(208, 233);
+            this.gaugeHeartBeat.Location = new System.Drawing.Point(14, 99);
             this.gaugeHeartBeat.Name = "gaugeHeartBeat";
-            this.gaugeHeartBeat.Size = new System.Drawing.Size(206, 156);
+            this.gaugeHeartBeat.Size = new System.Drawing.Size(399, 331);
             this.gaugeHeartBeat.TabIndex = 77;
             this.gaugeHeartBeat.Text = "gaugeHeartBeat";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.gaugeHeartBeat);
+            this.groupBox3.Controls.Add(this.gaugeTemperature);
+            this.groupBox3.Location = new System.Drawing.Point(3, 176);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(436, 445);
+            this.groupBox3.TabIndex = 78;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Monitor";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btnSend);
+            this.groupBox4.Controls.Add(this.knobPWM);
+            this.groupBox4.Location = new System.Drawing.Point(463, 176);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(396, 445);
+            this.groupBox4.TabIndex = 79;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Control";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(32, 647);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 16);
+            this.label3.TabIndex = 80;
+            this.label3.Text = "Debug Message:";
+            // 
+            // txtDbgMsg
+            // 
+            this.txtDbgMsg.Location = new System.Drawing.Point(143, 642);
+            this.txtDbgMsg.Name = "txtDbgMsg";
+            this.txtDbgMsg.ReadOnly = true;
+            this.txtDbgMsg.Size = new System.Drawing.Size(683, 23);
+            this.txtDbgMsg.TabIndex = 81;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 421);
-            this.Controls.Add(this.gaugeHeartBeat);
-            this.Controls.Add(this.knobPWM);
-            this.Controls.Add(this.gaugeTemperature);
-            this.Controls.Add(this.btnSend);
-            this.Controls.Add(this.label6);
+            this.ClientSize = new System.Drawing.Size(873, 677);
+            this.Controls.Add(this.txtDbgMsg);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtShow2);
-            this.Controls.Add(this.txtShow);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label12);
@@ -472,6 +418,8 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gaugeTemperature)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gaugeHeartBeat)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -488,20 +436,18 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox PubMessageTextBox;
-        private System.Windows.Forms.TextBox txtShow;
         private System.Windows.Forms.ComboBox HostCbb;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer tmrUpdateUI;
-        private System.Windows.Forms.TextBox txtShow2;
         private System.Windows.Forms.Button btn_publish;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnSend;
-        private System.Windows.Forms.TextBox txtTemperature;
-        private System.Windows.Forms.Label label7;
         private DevComponents.Instrumentation.GaugeControl gaugeTemperature;
         private DevComponents.Instrumentation.KnobControl knobPWM;
         private DevComponents.Instrumentation.GaugeControl gaugeHeartBeat;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtDbgMsg;
     }
 }
 

@@ -3,26 +3,14 @@
 #include <ELClientCmd.h>
 #include <ELClientMqtt.h>
 
-
-#include <movingAvg.h>                  // https://github.com/JChristensen/movingAvg
-#include "MAX30105.h"  //Get it here: http://librarymanager/All#SparkFun_MAX30105
-MAX30105 particleSensor;
-
-movingAvg tempSensor(10);                // define the moving average object
-
-
 /* SenML format library */
 #include <kpn_senml.h>
 
-#define SENML_DOC_BUFFER_SIZE  120
-
-/* Custom data structure */
-typedef struct {
-  unsigned char heartbeat;
-  unsigned int  temperature;
-} sensorData_t;
+#include "sensor.h"
 
 static sensorData_t sensorStruct;
+
+#define SENML_DOC_BUFFER_SIZE  120
 
 const char* mqttMonitorPubTopic = "arduino/monitor";
 const char* mqttControlSubTopic = "arduino/control";
@@ -39,7 +27,6 @@ SenMLFloatRecord rec1(KPN_SENML_TEMPERATURE, SENML_UNIT_DEGREES_CELSIUS, 0);
 SenMLFloatRecord rec2(KPN_SENML_BREADTH, SENML_UNIT_BEATS, 0);
 
 
-
 // Initialize a connection to esp-link using the normal hardware serial port both for
 // SLIP and for debug messages.
 ELClient esp(&Serial1, &Serial);
@@ -50,15 +37,6 @@ ELClientCmd cmd(&esp);
 // Initialize the MQTT client
 ELClientMqtt mqtt(&esp);
 
-void collectSensorData(sensorData_t* userbuf)
-{ int temperature = particleSensor.readTemperature()*10;
-  int temperature_avg = tempSensor.reading(temperature);  
-
-  if (userbuf != NULL) {
-    userbuf->heartbeat = 60;
-    userbuf->temperature = temperature_avg;
-  }
-}
 
 void makeSenMLFrame(sensorData_t* sensorStructP,  char* retFrameP) {
  rec1.set(sensorStructP->temperature);
@@ -74,7 +52,7 @@ void checkAndSendingData() {
   if (currentMillis - previousMillis >= interval == true ) {
       // Doc du lieu cam bien
        collectSensorData(&sensorStruct);
-      Serial.println("Collect sensor data DONE");
+       Serial.println("Collect sensor data DONE");
        
        // Tao frame data
        memset(retFrameBuf, 0x00, SENML_DOC_BUFFER_SIZE);
@@ -177,16 +155,8 @@ void setup() {
   mqtt.dataCb.attach(mqttData);
   mqtt.setup();
 
-  tempSensor.begin();
-  // Initialize sensor
-  if (particleSensor.begin(Wire, I2C_SPEED_FAST) == false) //Use default I2C port, 400kHz speed
-  {
-    Serial.println("MAX30105 was not found. Please check wiring/power. ");
-    while (1);
-  }
-  particleSensor.setup(); //Configure sensor. Use 25mA for LED drive
-
-  particleSensor.enableDIETEMPRDY(); //Enable the temp ready interrupt. This is required.
+  Serial.println("Init sensor");
+  sensorInit();
 
   Serial.println("EL-MQTT ready");
 }
