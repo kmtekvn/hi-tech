@@ -1,4 +1,5 @@
-  #include "logger.h"
+#include <Arduino.h>
+#include "logger.h"
 
 void logging_Setup(void)
 {

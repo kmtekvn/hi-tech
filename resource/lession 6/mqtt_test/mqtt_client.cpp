@@ -7,6 +7,8 @@
 #include <ELClientMqtt.h>
 
 #include "logger.h"
+#include "mqtt_client.h"
+
 
 // SLIP and for debug messages.
 ELClient esp(&Serial1, &Serial);
@@ -17,12 +19,14 @@ ELClientCmd cmd(&esp);
 // Initialize the MQTT client
 ELClientMqtt mqtt(&esp);
 
-bool connected;
-user_func 	__main_callback_invoke;
+bool connected = false;
 
 void mqtt_client_setup(void);
+void wifiCb(void* response) ;
 
-void MQTT_ClientInit(void)
+static user_func __main_callback_invoke;
+
+void MQTTClient_Init(void)
 {  
   bool ok;
   esp.wifiCb.attach(wifiCb); // wifi status change callback, optional (delete if not desired)
@@ -30,14 +34,14 @@ void MQTT_ClientInit(void)
   do 
   {
     ok = esp.Sync();      // sync up with esp-link, blocks for up to 2 seconds
-    if (!ok) { ultiLogging_Debug("EL-Client sync failed!"); }
+    if (!ok) { logging_SendDebug("EL-Client sync failed!"); }
   } while(!ok);
 
 
   // Set-up callbacks for events and initialize with es-link.
   mqtt_client_setup();
 
-  ultiLogging_Debug("EL-MQTT ready");
+  logging_SendDebug("EL-MQTT ready");
 }
 
 void MQTTClient_SendPubFrame(const char* frame)
@@ -45,6 +49,16 @@ void MQTTClient_SendPubFrame(const char* frame)
 	mqtt.publish(MQTT_MONITOR_TOPIC, frame);
 }
 
+bool MQTTClient_IsConnected(void)
+{
+  return connected;
+}
+
+bool MQTTClient_Loop(void)
+{
+  esp.Process();
+  return true;
+}
 //================================CALL BACKS=====================
 // Callback made from esp-link to notify of wifi status changes
 // Here we just print something out for grins
@@ -56,10 +70,10 @@ void wifiCb(void* response)
     res->popArg(&status, 1);
 
     if(status == STATION_GOT_IP) {
-      ultiLogging_Debug("WIFI CONNECTED");
+      logging_SendDebug("WIFI CONNECTED");
     } else {
-      ultiLogging_Debug("WIFI NOT READY: ");
-      ultiLogging_Debug(status);
+      logging_SendDebug("WIFI NOT READY: ");
+      logging_SendDebug(status);
     }
   }
 }
@@ -69,11 +83,11 @@ void mqttPublished(void* response)
   logging_SendDebug("MQTT published");
 }
 
-void MQTTClient_RegiserDatCb(user_func func)
+void MQTTClient_RegiserDatCb(user_func _func)
 {
-	if (func)
+	if (_func)
 	{
-		__main_callback_invoke = func;
+		__main_callback_invoke = _func;
 	}
 }
 
@@ -118,5 +132,5 @@ void mqtt_client_setup(void)
   mqtt.publishedCb.attach(mqttPublished);
   mqtt.dataCb.attach(mqttData);
   mqtt.setup();
-  ultiLogging_Debug("EL-Client starting!");
+  logging_SendDebug("EL-Client starting!");
 }

@@ -1,5 +1,9 @@
+#include <Arduino.h>
+
 /* SenML format library */
 #include <kpn_senml.h>
+
+#include "ultilities.h"
 
 #define SENML_DOC_BUFFER_SIZE  120
 

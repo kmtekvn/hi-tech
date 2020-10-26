@@ -1,11 +1,15 @@
+#include <Arduino.h>
 #include "actuator.h"
+
+
+#define   USER_LED_PIN    13
 
 void actuator_LEDInit(void)
 {
-  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(USER_LED_PIN, OUTPUT);
 }
 
 void actuator_LEDChangeState(bool state)
 {
-  digitalWrite(LED_BUILTIN, state);
+  digitalWrite(USER_LED_PIN, state);
 }
