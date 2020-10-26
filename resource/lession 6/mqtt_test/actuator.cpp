@@ -6,10 +6,15 @@
 
 void actuator_LEDInit(void)
 {
-  pinMode(USER_LED_PIN, OUTPUT);
+ // pinMode(USER_LED_PIN, OUTPUT);
 }
 
 void actuator_LEDChangeState(bool state)
 {
   digitalWrite(USER_LED_PIN, state);
+}
+
+void actuator_LEDChangeBrightness(int fadeValue)
+{
+	analogWrite(USER_LED_PIN, fadeValue);
 }

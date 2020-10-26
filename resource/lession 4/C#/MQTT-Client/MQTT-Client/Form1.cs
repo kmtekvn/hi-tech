@@ -110,15 +110,34 @@ namespace MQTT_Client
             }
             
         }
-
-        private void AppendTextBox2(string txt)
+         private void AppendTextBox2(string txt)
         {
             if (InvokeRequired)
             {
                 this.Invoke(new Action<string>(AppendTextBox2), new object[] { txt });
                 return;
             }
-            //txtTemperature.Text = txt;
+        }
+
+        private void UpdateTemperatureGauge(UInt32 temp)
+        {
+            float conv_temp = (float)((float)temp / 10.0);
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<UInt32>(UpdateTemperatureGauge), new object[] { temp });
+                return;
+            }
+            gaugeTemperature.SetPointerValue(gaugeTemperature.LinearScales[0].Pointers[0].Name, conv_temp);
+        }
+
+        private void UpdateHeartbeatGauge(UInt32 beat)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<UInt32>(UpdateHeartbeatGauge), new object[] { beat });
+                return;
+            }
+            gaugeHeartBeat.SetPointerValue(gaugeHeartBeat.CircularScales[0].Pointers[0].Name, beat);
         }
 
         /* Start Display Mqtt Message */
@@ -149,11 +168,13 @@ namespace MQTT_Client
                     JObject obj = JObject.Load(reader);
                     if ((string)obj["n"] == "temperature")
                     {
-                        AppendTextBox("Temperature: " + (string)obj["v"] + "\r\n");
+                        //AppendTextBox("Temperature: " + (string)obj["v"] + "\r\n");
+                        UpdateTemperatureGauge((UInt32)obj["v"]);
                     }
                     else if ((string)obj["n"] == "breadth")
                     {
-                        AppendTextBox("Hearbeat: " + (string)obj["v"] + "\r\n");
+                        //AppendTextBox("Hearbeat: " + (string)obj["v"] + "\r\n");
+                        UpdateHeartbeatGauge((UInt32)obj["v"]);
                     }
                 }
             }
@@ -240,7 +261,7 @@ namespace MQTT_Client
 
         private void btnSend_Click_1(object sender, EventArgs e)
         {
-            btnSend.Text = "Clicked";
+            client.Publish("arduino/control", Encoding.UTF8.GetBytes("reboot"));
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -250,20 +271,18 @@ namespace MQTT_Client
 
         private void tmrUpdateUI_Tick(object sender, EventArgs e)
         {
-            gaugeHeartBeat.SetPointerValue(gaugeHeartBeat.CircularScales[0].Pointers[0].Name, gauge_value);
-            gaugeTemperature.SetPointerValue(gaugeTemperature.LinearScales[0].Pointers[0].Name, gauge_value);
-
-            gauge_value += 1;
         }
 
         private void knobPWM_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void knobPWM_CursorChanged(object sender, EventArgs e)
         {
-            btnSend.Text = "Knod changed" + knobPWM.Value;
+            //btnSend.Text = "Knod changed" + knobPWM.Value;
+            // TODO: publish value to broker
+            client.Publish("arduino/control", Encoding.UTF8.GetBytes(knobPWM.Value.ToString()));
         }
     }
 }

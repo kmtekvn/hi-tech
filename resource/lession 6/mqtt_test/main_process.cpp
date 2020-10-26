@@ -20,8 +20,10 @@ static char retFrameBuf[SENML_DOC_BUFFER_SIZE];
 static sensorData_t sensorStruct;
 
 // Function prototype: khai bao ngyen ham de cac ham phia tren co the goi duoc
-void _mainMqttSubDataHandler(const char* data);
+void _mainMqttSubDataHandler(String revcStr);
+
 void _mainCheckSendData(void);
+void(* resetSoftware)(void) = 0;
 
 void Main_InitHw(void)
 {
@@ -50,18 +52,23 @@ void Main_InitLibs(void)
 
 void Main_ProcessLoop()
 {
+  MQTTClient_Loop();
   if (MQTTClient_IsConnected() ) {
     _mainCheckSendData();
   }
 }
 
 
-void _mainMqttSubDataHandler(const char* data)
+void _mainMqttSubDataHandler(String revcStr)
 {
-  if (data == "ON") {
-    actuator_LEDChangeState(true);
-  }else if (data == "OFF") {
-    actuator_LEDChangeState(false);
+  if (revcStr == "reboot")
+  {
+     logging_SendDebug("Will rebooting...");
+     delay(100);
+     resetSoftware();
+  }else
+  {
+     actuator_LEDChangeBrightness(revcStr.toInt());
   }
 }
 

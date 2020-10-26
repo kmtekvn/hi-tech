@@ -29,6 +29,8 @@ static user_func __main_callback_invoke;
 void MQTTClient_Init(void)
 {  
   bool ok;
+  Serial1.begin(115200);
+
   esp.wifiCb.attach(wifiCb); // wifi status change callback, optional (delete if not desired)
   
   do 
@@ -104,10 +106,7 @@ void mqttData(void* response)
   String data = res->popString();
   logging_SendDebug(data);
 
-  if (data == "ON" || data == "OFF") 
-  {
-   if (__main_callback_invoke) { __main_callback_invoke(data);}
-  }
+  if (__main_callback_invoke) { __main_callback_invoke(data);}
 }
 
 // Callback when MQTT is connected

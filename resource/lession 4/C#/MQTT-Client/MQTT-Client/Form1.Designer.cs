@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevComponents.Instrumentation.GradientFillColor gradientFillColor1 = new DevComponents.Instrumentation.GradientFillColor();
-            DevComponents.Instrumentation.GradientFillColor gradientFillColor2 = new DevComponents.Instrumentation.GradientFillColor();
-            DevComponents.Instrumentation.GaugeText gaugeText1 = new DevComponents.Instrumentation.GaugeText();
+            DevComponents.Instrumentation.GradientFillColor gradientFillColor5 = new DevComponents.Instrumentation.GradientFillColor();
+            DevComponents.Instrumentation.GradientFillColor gradientFillColor6 = new DevComponents.Instrumentation.GradientFillColor();
+            DevComponents.Instrumentation.GaugeText gaugeText2 = new DevComponents.Instrumentation.GaugeText();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            DevComponents.Instrumentation.GaugeLinearScale gaugeLinearScale1 = new DevComponents.Instrumentation.GaugeLinearScale();
-            DevComponents.Instrumentation.GaugePointer gaugePointer1 = new DevComponents.Instrumentation.GaugePointer();
-            DevComponents.Instrumentation.GaugeSection gaugeSection1 = new DevComponents.Instrumentation.GaugeSection();
-            DevComponents.Instrumentation.GaugeCircularScale gaugeCircularScale1 = new DevComponents.Instrumentation.GaugeCircularScale();
-            DevComponents.Instrumentation.GaugePointer gaugePointer2 = new DevComponents.Instrumentation.GaugePointer();
-            DevComponents.Instrumentation.GaugeRange gaugeRange1 = new DevComponents.Instrumentation.GaugeRange();
-            DevComponents.Instrumentation.GaugeSection gaugeSection2 = new DevComponents.Instrumentation.GaugeSection();
-            DevComponents.Instrumentation.GradientFillColor gradientFillColor3 = new DevComponents.Instrumentation.GradientFillColor();
-            DevComponents.Instrumentation.GradientFillColor gradientFillColor4 = new DevComponents.Instrumentation.GradientFillColor();
+            DevComponents.Instrumentation.GaugeLinearScale gaugeLinearScale2 = new DevComponents.Instrumentation.GaugeLinearScale();
+            DevComponents.Instrumentation.GaugePointer gaugePointer3 = new DevComponents.Instrumentation.GaugePointer();
+            DevComponents.Instrumentation.GaugeSection gaugeSection3 = new DevComponents.Instrumentation.GaugeSection();
+            DevComponents.Instrumentation.GaugeCircularScale gaugeCircularScale2 = new DevComponents.Instrumentation.GaugeCircularScale();
+            DevComponents.Instrumentation.GaugePointer gaugePointer4 = new DevComponents.Instrumentation.GaugePointer();
+            DevComponents.Instrumentation.GaugeRange gaugeRange2 = new DevComponents.Instrumentation.GaugeRange();
+            DevComponents.Instrumentation.GaugeSection gaugeSection4 = new DevComponents.Instrumentation.GaugeSection();
+            DevComponents.Instrumentation.GradientFillColor gradientFillColor7 = new DevComponents.Instrumentation.GradientFillColor();
+            DevComponents.Instrumentation.GradientFillColor gradientFillColor8 = new DevComponents.Instrumentation.GradientFillColor();
             this.label4 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.ConnectButton = new System.Windows.Forms.Button();
@@ -216,7 +216,6 @@
             // 
             // tmrUpdateUI
             // 
-            this.tmrUpdateUI.Enabled = true;
             this.tmrUpdateUI.Interval = 1000;
             this.tmrUpdateUI.Tick += new System.EventHandler(this.tmrUpdateUI_Tick);
             // 
@@ -232,57 +231,57 @@
             // 
             // gaugeTemperature
             // 
-            gradientFillColor1.Color1 = System.Drawing.Color.Gainsboro;
-            gradientFillColor1.Color2 = System.Drawing.Color.DarkGray;
-            this.gaugeTemperature.Frame.BackColor = gradientFillColor1;
-            gradientFillColor2.BorderColor = System.Drawing.Color.Gainsboro;
-            gradientFillColor2.BorderWidth = 1;
-            gradientFillColor2.Color1 = System.Drawing.Color.White;
-            gradientFillColor2.Color2 = System.Drawing.Color.DimGray;
-            this.gaugeTemperature.Frame.FrameColor = gradientFillColor2;
-            gaugeText1.BackColor.BorderColor = System.Drawing.Color.Black;
-            gaugeText1.Location = ((System.Drawing.PointF)(resources.GetObject("gaugeText1.Location")));
-            gaugeText1.Name = "Text1";
-            gaugeText1.Size = new System.Drawing.SizeF(0.5F, 0.5F);
-            gaugeText1.Text = "C°";
+            gradientFillColor5.Color1 = System.Drawing.Color.Gainsboro;
+            gradientFillColor5.Color2 = System.Drawing.Color.DarkGray;
+            this.gaugeTemperature.Frame.BackColor = gradientFillColor5;
+            gradientFillColor6.BorderColor = System.Drawing.Color.Gainsboro;
+            gradientFillColor6.BorderWidth = 1;
+            gradientFillColor6.Color1 = System.Drawing.Color.White;
+            gradientFillColor6.Color2 = System.Drawing.Color.DimGray;
+            this.gaugeTemperature.Frame.FrameColor = gradientFillColor6;
+            gaugeText2.BackColor.BorderColor = System.Drawing.Color.Black;
+            gaugeText2.Location = ((System.Drawing.PointF)(resources.GetObject("gaugeText2.Location")));
+            gaugeText2.Name = "Text1";
+            gaugeText2.Size = new System.Drawing.SizeF(0.5F, 0.5F);
+            gaugeText2.Text = "C°";
             this.gaugeTemperature.GaugeItems.AddRange(new DevComponents.Instrumentation.GaugeItem[] {
-            gaugeText1});
-            gaugeLinearScale1.Labels.FormatString = "0°";
-            gaugeLinearScale1.Location = ((System.Drawing.PointF)(resources.GetObject("gaugeLinearScale1.Location")));
-            gaugeLinearScale1.MajorTickMarks.Layout.Placement = DevComponents.Instrumentation.DisplayPlacement.Near;
-            gaugeLinearScale1.MajorTickMarks.Layout.Style = DevComponents.Instrumentation.GaugeMarkerStyle.Rectangle;
-            gaugeLinearScale1.MajorTickMarks.Layout.Width = 0.008F;
-            gaugeLinearScale1.MaxPin.Name = "MaxPin";
-            gaugeLinearScale1.MaxPin.Visible = false;
-            gaugeLinearScale1.MaxValue = 40D;
-            gaugeLinearScale1.MinorTickMarks.Layout.Placement = DevComponents.Instrumentation.DisplayPlacement.Near;
-            gaugeLinearScale1.MinorTickMarks.Layout.Width = 0.016F;
-            gaugeLinearScale1.MinPin.Name = "MinPin";
-            gaugeLinearScale1.MinPin.Visible = false;
-            gaugeLinearScale1.Name = "Scale1";
-            gaugePointer1.BulbOffset = 0.026F;
-            gaugePointer1.BulbSize = 0.132F;
-            gaugePointer1.CapFillColor.BorderColor = System.Drawing.Color.DimGray;
-            gaugePointer1.CapFillColor.BorderWidth = 1;
-            gaugePointer1.CapFillColor.Color1 = System.Drawing.Color.WhiteSmoke;
-            gaugePointer1.CapFillColor.Color2 = System.Drawing.Color.DimGray;
-            gaugePointer1.FillColor.Color1 = System.Drawing.Color.Red;
-            gaugePointer1.Name = "Pointer1";
-            gaugePointer1.Style = DevComponents.Instrumentation.PointerStyle.Thermometer;
-            gaugePointer1.ThermoBackColor.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            gaugePointer1.Value = 12D;
-            gaugePointer1.Width = 0.1F;
-            gaugeLinearScale1.Pointers.AddRange(new DevComponents.Instrumentation.GaugePointer[] {
-            gaugePointer1});
-            gaugeSection1.FillColor.Color1 = System.Drawing.Color.SteelBlue;
-            gaugeSection1.FillColor.Color2 = System.Drawing.Color.LightCyan;
-            gaugeSection1.FillColor.GradientFillType = DevComponents.Instrumentation.GradientFillType.HorizontalCenter;
-            gaugeSection1.Name = "Section1";
-            gaugeLinearScale1.Sections.AddRange(new DevComponents.Instrumentation.GaugeSection[] {
-            gaugeSection1});
-            gaugeLinearScale1.Width = 0.1F;
+            gaugeText2});
+            gaugeLinearScale2.Labels.FormatString = "0°";
+            gaugeLinearScale2.Location = ((System.Drawing.PointF)(resources.GetObject("gaugeLinearScale2.Location")));
+            gaugeLinearScale2.MajorTickMarks.Layout.Placement = DevComponents.Instrumentation.DisplayPlacement.Near;
+            gaugeLinearScale2.MajorTickMarks.Layout.Style = DevComponents.Instrumentation.GaugeMarkerStyle.Rectangle;
+            gaugeLinearScale2.MajorTickMarks.Layout.Width = 0.008F;
+            gaugeLinearScale2.MaxPin.Name = "MaxPin";
+            gaugeLinearScale2.MaxPin.Visible = false;
+            gaugeLinearScale2.MaxValue = 40D;
+            gaugeLinearScale2.MinorTickMarks.Layout.Placement = DevComponents.Instrumentation.DisplayPlacement.Near;
+            gaugeLinearScale2.MinorTickMarks.Layout.Width = 0.016F;
+            gaugeLinearScale2.MinPin.Name = "MinPin";
+            gaugeLinearScale2.MinPin.Visible = false;
+            gaugeLinearScale2.Name = "Scale1";
+            gaugePointer3.BulbOffset = 0.026F;
+            gaugePointer3.BulbSize = 0.132F;
+            gaugePointer3.CapFillColor.BorderColor = System.Drawing.Color.DimGray;
+            gaugePointer3.CapFillColor.BorderWidth = 1;
+            gaugePointer3.CapFillColor.Color1 = System.Drawing.Color.WhiteSmoke;
+            gaugePointer3.CapFillColor.Color2 = System.Drawing.Color.DimGray;
+            gaugePointer3.FillColor.Color1 = System.Drawing.Color.Red;
+            gaugePointer3.Name = "Pointer1";
+            gaugePointer3.Style = DevComponents.Instrumentation.PointerStyle.Thermometer;
+            gaugePointer3.ThermoBackColor.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            gaugePointer3.Value = 12D;
+            gaugePointer3.Width = 0.1F;
+            gaugeLinearScale2.Pointers.AddRange(new DevComponents.Instrumentation.GaugePointer[] {
+            gaugePointer3});
+            gaugeSection3.FillColor.Color1 = System.Drawing.Color.SteelBlue;
+            gaugeSection3.FillColor.Color2 = System.Drawing.Color.LightCyan;
+            gaugeSection3.FillColor.GradientFillType = DevComponents.Instrumentation.GradientFillType.HorizontalCenter;
+            gaugeSection3.Name = "Section1";
+            gaugeLinearScale2.Sections.AddRange(new DevComponents.Instrumentation.GaugeSection[] {
+            gaugeSection3});
+            gaugeLinearScale2.Width = 0.1F;
             this.gaugeTemperature.LinearScales.AddRange(new DevComponents.Instrumentation.GaugeLinearScale[] {
-            gaugeLinearScale1});
+            gaugeLinearScale2});
             this.gaugeTemperature.Location = new System.Drawing.Point(10, 22);
             this.gaugeTemperature.Name = "gaugeTemperature";
             this.gaugeTemperature.Size = new System.Drawing.Size(404, 71);
@@ -306,47 +305,47 @@
             // 
             // gaugeHeartBeat
             // 
-            gaugeCircularScale1.MaxPin.Name = "MaxPin";
-            gaugeCircularScale1.MaxValue = 150D;
-            gaugeCircularScale1.MinPin.Name = "MinPin";
-            gaugeCircularScale1.Name = "Scale1";
-            gaugePointer2.CapFillColor.BorderColor = System.Drawing.Color.DimGray;
-            gaugePointer2.CapFillColor.BorderWidth = 1;
-            gaugePointer2.CapFillColor.Color1 = System.Drawing.Color.WhiteSmoke;
-            gaugePointer2.CapFillColor.Color2 = System.Drawing.Color.DimGray;
-            gaugePointer2.FillColor.BorderColor = System.Drawing.Color.DimGray;
-            gaugePointer2.FillColor.BorderWidth = 1;
-            gaugePointer2.FillColor.Color1 = System.Drawing.Color.WhiteSmoke;
-            gaugePointer2.FillColor.Color2 = System.Drawing.Color.Red;
-            gaugePointer2.Length = 0.358F;
-            gaugePointer2.Name = "Pointer1";
-            gaugePointer2.Style = DevComponents.Instrumentation.PointerStyle.Needle;
-            gaugeCircularScale1.Pointers.AddRange(new DevComponents.Instrumentation.GaugePointer[] {
-            gaugePointer2});
-            gaugeRange1.FillColor.BorderColor = System.Drawing.Color.DimGray;
-            gaugeRange1.FillColor.BorderWidth = 1;
-            gaugeRange1.FillColor.Color1 = System.Drawing.Color.Lime;
-            gaugeRange1.FillColor.Color2 = System.Drawing.Color.Red;
-            gaugeRange1.Name = "Range1";
-            gaugeRange1.ScaleOffset = 0.28F;
-            gaugeRange1.StartValue = 70D;
-            gaugeCircularScale1.Ranges.AddRange(new DevComponents.Instrumentation.GaugeRange[] {
-            gaugeRange1});
-            gaugeSection2.FillColor.Color1 = System.Drawing.Color.CornflowerBlue;
-            gaugeSection2.FillColor.Color2 = System.Drawing.Color.Purple;
-            gaugeSection2.Name = "Section1";
-            gaugeCircularScale1.Sections.AddRange(new DevComponents.Instrumentation.GaugeSection[] {
-            gaugeSection2});
+            gaugeCircularScale2.MaxPin.Name = "MaxPin";
+            gaugeCircularScale2.MaxValue = 150D;
+            gaugeCircularScale2.MinPin.Name = "MinPin";
+            gaugeCircularScale2.Name = "Scale1";
+            gaugePointer4.CapFillColor.BorderColor = System.Drawing.Color.DimGray;
+            gaugePointer4.CapFillColor.BorderWidth = 1;
+            gaugePointer4.CapFillColor.Color1 = System.Drawing.Color.WhiteSmoke;
+            gaugePointer4.CapFillColor.Color2 = System.Drawing.Color.DimGray;
+            gaugePointer4.FillColor.BorderColor = System.Drawing.Color.DimGray;
+            gaugePointer4.FillColor.BorderWidth = 1;
+            gaugePointer4.FillColor.Color1 = System.Drawing.Color.WhiteSmoke;
+            gaugePointer4.FillColor.Color2 = System.Drawing.Color.Red;
+            gaugePointer4.Length = 0.358F;
+            gaugePointer4.Name = "Pointer1";
+            gaugePointer4.Style = DevComponents.Instrumentation.PointerStyle.Needle;
+            gaugeCircularScale2.Pointers.AddRange(new DevComponents.Instrumentation.GaugePointer[] {
+            gaugePointer4});
+            gaugeRange2.FillColor.BorderColor = System.Drawing.Color.DimGray;
+            gaugeRange2.FillColor.BorderWidth = 1;
+            gaugeRange2.FillColor.Color1 = System.Drawing.Color.Lime;
+            gaugeRange2.FillColor.Color2 = System.Drawing.Color.Red;
+            gaugeRange2.Name = "Range1";
+            gaugeRange2.ScaleOffset = 0.28F;
+            gaugeRange2.StartValue = 70D;
+            gaugeCircularScale2.Ranges.AddRange(new DevComponents.Instrumentation.GaugeRange[] {
+            gaugeRange2});
+            gaugeSection4.FillColor.Color1 = System.Drawing.Color.CornflowerBlue;
+            gaugeSection4.FillColor.Color2 = System.Drawing.Color.Purple;
+            gaugeSection4.Name = "Section1";
+            gaugeCircularScale2.Sections.AddRange(new DevComponents.Instrumentation.GaugeSection[] {
+            gaugeSection4});
             this.gaugeHeartBeat.CircularScales.AddRange(new DevComponents.Instrumentation.GaugeCircularScale[] {
-            gaugeCircularScale1});
-            gradientFillColor3.Color1 = System.Drawing.Color.Gainsboro;
-            gradientFillColor3.Color2 = System.Drawing.Color.DarkGray;
-            this.gaugeHeartBeat.Frame.BackColor = gradientFillColor3;
-            gradientFillColor4.BorderColor = System.Drawing.Color.Gainsboro;
-            gradientFillColor4.BorderWidth = 1;
-            gradientFillColor4.Color1 = System.Drawing.Color.White;
-            gradientFillColor4.Color2 = System.Drawing.Color.DimGray;
-            this.gaugeHeartBeat.Frame.FrameColor = gradientFillColor4;
+            gaugeCircularScale2});
+            gradientFillColor7.Color1 = System.Drawing.Color.Gainsboro;
+            gradientFillColor7.Color2 = System.Drawing.Color.DarkGray;
+            this.gaugeHeartBeat.Frame.BackColor = gradientFillColor7;
+            gradientFillColor8.BorderColor = System.Drawing.Color.Gainsboro;
+            gradientFillColor8.BorderWidth = 1;
+            gradientFillColor8.Color1 = System.Drawing.Color.White;
+            gradientFillColor8.Color2 = System.Drawing.Color.DimGray;
+            this.gaugeHeartBeat.Frame.FrameColor = gradientFillColor8;
             this.gaugeHeartBeat.Frame.Style = DevComponents.Instrumentation.GaugeFrameStyle.Circular;
             this.gaugeHeartBeat.Location = new System.Drawing.Point(14, 99);
             this.gaugeHeartBeat.Name = "gaugeHeartBeat";
