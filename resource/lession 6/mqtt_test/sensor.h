@@ -8,7 +8,7 @@ typedef struct {
 } sensorData_t;
 
 
-void sensorInit(void);
-void collectSensorData(sensorData_t* userbuf);
+void Sensor_Init(void);
+void Sensor_collectData(sensorData_t* userbuf);
 
 #endif /* SENSOR_H_ */
