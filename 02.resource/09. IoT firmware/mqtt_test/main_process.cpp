@@ -87,6 +87,7 @@ void _mainCheckSendData(void)
        // Tao frame data
       memset(retFrameBuf, 0x00, SENML_DOC_BUFFER_SIZE);
       Ultil_MakeSenMLFrame(&sensorStruct, retFrameBuf);
+      logging_SendDebug(retFrameBuf);
       logging_SendDebug("Created data frame DONE");
 
       MQTTClient_SendPubFrame(retFrameBuf);

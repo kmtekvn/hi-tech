@@ -33,7 +33,7 @@ void Sensor_collectData(sensorData_t* userbuf)
   int temperature_avg = tempSensor.reading(temperature);  
 
   if (userbuf != NULL) {
-    userbuf->heartbeat = 60;
+    userbuf->heartbeat =  temperature_avg;
     userbuf->temperature = temperature_avg;
   }
 }

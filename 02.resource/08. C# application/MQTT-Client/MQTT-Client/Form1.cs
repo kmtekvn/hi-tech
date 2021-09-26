@@ -19,7 +19,9 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using DevComponents.DotNetBar;
 using DevComponents.Instrumentation;
-
+/* 
+ * 
+ * [{"bn":"gateway"},{"bn":"dev1","n":"temperature","u":"Cel","v":35.0},{"n":"breadth","u":"beats","v":60.0}]
 /*
  Libs: Install-Package Newtonsoft.Json
  */

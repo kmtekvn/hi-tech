@@ -6,16 +6,18 @@
 #include <ELClientCmd.h>
 #include <ELClientMqtt.h>
 
-#include <movingAvg.h>                  // https://github.com/JChristensen/movingAvg
-#include "MAX30105.h"  //Get it here: http://librarymanager/All#SparkFun_MAX30105
 #include <kpn_senml.h>
+#include "sensor.h"
 
-MAX30105 particleSensor;
-movingAvg temperatureSensor(10);                // define the moving average object
+#define ABC 123 // macro
+#define SENSOR_ENABLE
 
+#ifdef SENSOR_ENABLE
 SenMLPack doc("sensor");
 // Tao record theo format Temperature
 SenMLFloatRecord rec(KPN_SENML_TEMPERATURE, SENML_UNIT_DEGREES_CELSIUS, 0);                 
+
+#endif
 
 // Initialize a connection to esp-link using the normal hardware serial port both for
 // SLIP and for debug messages.
@@ -39,27 +41,7 @@ void senml_format_encode(float val, const char* buffer, int buf_size)
   memset(buffer,0, buf_size);            
   doc.toJson(buffer, buf_size);
 }
-// Sensor group
-void sensor_setup()
-{
-  temperatureSensor.begin();
-    // Initialize sensor
-  if (particleSensor.begin(Wire, I2C_SPEED_FAST) == false) //Use default I2C port, 400kHz speed
-  {
-    Serial.println("MAX30105 was not found. Please check wiring/power. ");
-    while (1);
-  }
-   particleSensor.setup(0); //Configure sensor. Turn off LEDs
-   particleSensor.enableDIETEMPRDY(); //Enable the temp ready interrupt. This is required.
-}
 
-float sensor_process()
-{
-  float temperature = particleSensor.readTemperature();
-  float avgTemp = temperatureSensor.reading(temperature); 
-
-  return avgTemp;
-}
 
 void el_client_send_msg(char* buf)
 {
@@ -91,6 +73,8 @@ bool connected;
 void mqttConnected(void* response) {
   Serial.println("MQTT connected!");
   mqtt.subscribe("/esp-link/1");
+  
+  mqtt.subscribe("/arduino/command");
   //mqtt.subscribe("/hello/world/#");
   //mqtt.subscribe("/esp-link/2", 1);
   //mqtt.publish("/esp-link/0", "test1");
@@ -114,6 +98,8 @@ void mqttData(void* response) {
   Serial.print("data=");
   String data = res->popString();
 
+if (topic == "/arduino/command")
+{
   // Dieu khien LED
   if (data == "on")
   {
@@ -124,6 +110,7 @@ void mqttData(void* response) {
   }
 
   Serial.println(data);
+}
 }
 
 void mqttPublished(void* response) {

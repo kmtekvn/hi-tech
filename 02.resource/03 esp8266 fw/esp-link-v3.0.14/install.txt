@@ -1,0 +1,4 @@
+1. Cai python 3.9
+2. Cai python-pip
+3. Enter command: 
+pip install esptool
