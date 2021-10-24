@@ -1,34 +1,27 @@
-#include <kpn_senml.h>
+#include "senml_encode.h"
 
-SenMLPack doc("device_name"); // Create document (message) - basename (multi datapoint)
+#define MAX_SENML_STRING_BUFFER_LEN       128
+
+static char buffer[MAX_SENML_STRING_BUFFER_LEN];
 
 void setup(){
     Serial.begin(115200); // Setup debug port 
-    
-    senMLSetLogger(&Serial); // Debug port for SenML library
+    /*TODO: Call senml encode init*/
+    senml_encode_init();
     
     delay(1000);
     Serial.println("start");
 }
 
 void loop(){
-    SenMLBoolRecord rec(KPN_SENML_TEMPERATURE); // Create data record 
-
-    // Insert sensor value to data record
+   /*TODO: create senml record */                
+   // Insert sensor value to data record
     int val = analogRead(1);    
-    rec.set(val);
-
-    // Attach record to frame
-    doc.add(&rec);                      
-
-    char buffer[120];   
-
-    // Output character string
-    memset(buffer,0, sizeof(buffer));            
-    doc.toJson(buffer, sizeof(buffer));
-    Serial.println(buffer);
-    /* [{"bn":"device_name","n":"temperature","vb":true}] */
-
-
-    delay(1000);
+    senml_encode_add_record(SENML_REC_TYPE_TEMP, val);
+    
+   /*TODO: convert senml record to string */
+   senml_encoder_get_string(buffer, MAX_SENML_STRING_BUFFER_LEN);
+   Serial.println(buffer);
+       
+   delay(1000);
 }

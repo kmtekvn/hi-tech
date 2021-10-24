@@ -1,22 +1,24 @@
-/*TODO: include module header*/
-#include "esplink_client.h" // Them vao file header tai folder local
+#include "esplink_client.h"
+#include "senml_encode.h"
+
+#define MAX_SENML_STRING_BUFFER_LEN       128
+static char buffer[MAX_SENML_STRING_BUFFER_LEN];
+static int temperature = 32;
+static uint32_t last;
 
 #define LED_ON_CMD  "led_on"
 #define TOPIC_CMD   "/arduino/control"
 
-static int count = 0;
-static uint32_t last;
 
-void mqtt_app_command_handler(String topic, String payload);
-
-void setup() {
+void setup()
+{
   // Khoi tao cong Serial 
   Serial1.begin(115200); // Cong giao tiep ESP TX1, RX1
   Serial.begin(115200);  // Cong giao tiep PC
   
-  Serial.println("EL-Client starting!"); // ln = line: xuong dong
+  senml_encode_init();
 
-  /*TODO: call esplink sync function */
+ /*TODO: call esplink sync function */
   if ( esplink_sync_check() )
   {
     Serial.println("EL-Client synced!");
@@ -28,21 +30,28 @@ void setup() {
     Serial.println("EL-MQTT ready");
   }else {
     Serial.println("EL-MQTT sync timeout");
-  }
+  }  
+  
 }
 
-void loop() {
-  /* TODO: call esplink loop process */
-  esplink_loop();
-  
+
+void loop()
+{
   // Example send data to MQTT broker
   if (esplink_is_connected() && (millis()-last) > 4000) {
     Serial.println("publishing");
     /*TODO: call publish function */
-    esplink_pub_msg(count++);
+    senml_encode_add_record(SENML_REC_TYPE_TEMP, temperature);
+    senml_encoder_get_string(buffer, MAX_SENML_STRING_BUFFER_LEN);
+    
+    esplink_pub_msg(buffer);
     last = millis();
   }
+    
+   esplink_loop();
 }
+
+
 
 void mqtt_app_command_handler(String topic, String payload)
 {
