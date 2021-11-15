@@ -6,6 +6,8 @@
 
 #include <Arduino.h> // for Serial1 & Serial symbol
 
+#include "app_config.h"
+
 #define ESPLINK_SYNC_TIMEOUT  10000UL  // 10 seconds
 
 typedef void (*__data_process_func_t)(String, String); // Khai bao kieu du lieu con tro ham
@@ -21,7 +23,7 @@ void mqttPublished(void* response);
 
 // Initialize a connection to esp-link using the normal hardware serial port both for
 // SLIP and for debug messages.
-ELClient esp(&Serial1, &Serial); // Serial : default debug port
+ELClient esp(&Serial, &Serial); // Serial : default debug port
 
 // Initialize CMD client (for GetTime)
 ELClientCmd cmd(&esp);
@@ -74,9 +76,11 @@ void esplink_loop()
    esp.Process(); // Library loop, process data frame sent from ESP
 }
 
+
+
 void esplink_pub_msg(const char* msg)
 {
-    mqtt.publish("/esp-link/1", msg);
+    mqtt.publish(ESPLINK_PUBLISH_TOPIC, msg);
 }
 
 void esplink_data_call_register(void* func_ptr)
@@ -93,26 +97,25 @@ void wifiCb(void* response) {
     res->popArg(&status, 1);
 
     if(status == STATION_GOT_IP) {
-      Serial.println("WIFI CONNECTED");
+      DEBUG_MSG("WIFI CONNECTED");
     } else {
-      Serial.print("WIFI NOT READY: ");
-      Serial.println(status);
+      DEBUG_MSG("WIFI NOT READY: ");
+      DEBUG_MSG(status);
     }
   }
 }
 
+
 // Callback when MQTT is connected
 void mqttConnected(void* response) {
-  Serial.println("MQTT connected!");
-  mqtt.subscribe("/esp-link/1");
-  mqtt.subscribe("/hello/world/#");
-
+  DEBUG_MSG("MQTT connected!");
+  mqtt.subscribe(ESPLINK_SUB_TOPIC);
   connected = true;
 }
 
 // Callback when MQTT is disconnected
 void mqttDisconnected(void* response) {
-  Serial.println("MQTT disconnected");
+  DEBUG_MSG("MQTT disconnected");
   connected = false;
 }
 
@@ -120,17 +123,17 @@ void mqttDisconnected(void* response) {
 void mqttData(void* response) {
   ELClientResponse *res = (ELClientResponse *)response;
 
-  Serial.print("Received: topic=");
+  DEBUG_MSG("Received: topic=");
   String topic = res->popString();
-  Serial.println(topic);
+  DEBUG_MSG(topic);
 
-  Serial.print("data=");
+  DEBUG_MSG("data=");
   String data = res->popString();
-  Serial.println(data);
+  DEBUG_MSG(data);
 
   __user_data_process_cb(topic, data); // Call user function indirectly via function pointer
 }
 
 void mqttPublished(void* response) {
-  Serial.println("MQTT published");
+  DEBUG_MSG("MQTT published");
 }

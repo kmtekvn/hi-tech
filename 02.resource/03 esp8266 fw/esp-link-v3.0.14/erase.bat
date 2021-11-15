@@ -1,1 +1,1 @@
-esptool.py --port COM13 erase_flash
+esptool --port COM14 erase_flash

@@ -1,7 +1,9 @@
 #ifndef SENML_ENCODE
 #define SENML_ENCODE
 
-#define SENML_DEVICE_NAME  "arduino"
+#ifndef SENML_DEVICE_NAME
+  #define SENML_DEVICE_NAME  "arduino"
+#endif  /* SENML_DEVICE_NAME */
 
 enum {
   SENML_REC_TYPE_TEMP = 0x00,
