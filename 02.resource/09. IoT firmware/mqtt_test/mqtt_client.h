@@ -1,7 +1,7 @@
 #ifndef MQTT_CLIENT_H_
 #define MQTT_CLIENT_H_
 
-typedef  void (*user_func)(String);
+typedef  void (*user_func)(String); // data type -> function pointer 
 
 void MQTTClient_Init(void);
 void MQTTClient_RegiserDatCb(user_func func);

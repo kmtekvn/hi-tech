@@ -1,7 +1,7 @@
 #ifndef CONFIG_H_
 #define CONFIG_H_
 
-#define   	CONFIG_LOGGER_EN         (1)
+#define   	CONFIG_LOGGER_EN         (0) // Comment out to disable all debug message
 
 #define		SENML_DOC_BUFFER_SIZE  120
 

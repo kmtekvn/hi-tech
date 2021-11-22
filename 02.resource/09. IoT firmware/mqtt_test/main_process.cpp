@@ -33,12 +33,12 @@ void Main_InitHw(void)
   // Init actuator hw
   actuator_LEDInit();
 
-  Sensor_Init();
+  Sensor_Init(); // Init I2C bus and find heartbeat sensor
 }
 
 void Main_InitLibs(void)
 {
-  Ultil_SenMLInit();
+  Ultil_SenMLInit(); //
 
   Sensor_Init();
   logging_SendDebug("Init sensor DONE");

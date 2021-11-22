@@ -11,7 +11,7 @@
 
 
 // SLIP and for debug messages.
-ELClient esp(&Serial1, &Serial);
+ELClient esp(&Serial); // Mega2560: ELClient esp(&Serial1, &Serial); // Serial1: to ESP, Serial: debug
 
 // Initialize CMD client (for GetTime)
 ELClientCmd cmd(&esp);
@@ -29,7 +29,7 @@ static user_func __main_callback_invoke;
 void MQTTClient_Init(void)
 {  
   bool ok;
-  Serial1.begin(115200);
+//  Serial1.begin(115200);
 
   esp.wifiCb.attach(wifiCb); // wifi status change callback, optional (delete if not desired)
   

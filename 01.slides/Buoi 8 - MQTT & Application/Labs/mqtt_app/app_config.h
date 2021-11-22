@@ -16,13 +16,13 @@
 
 
 #define  TOPIC_CMD               "/arduino/control"
-#define  ESPLINK_PUBLISH_TOPIC   "/arduino/data"
+#define  ESPLINK_PUBLISH_TOPIC   "/arduino/monitor"
 #define  ESPLINK_SUB_TOPIC       TOPIC_CMD
 
 
 #define  SENML_DEVICE_NAME        "iot_device"
 
-#define  SHOW_DEBUG                 0  // Enable Debug
+#define  SHOW_DEBUG                 1  // Enable Debug
 
 #if SHOW_DEBUG > 0
   #define  DEBUG_MSG(msg)          do { Serial.println(msg); } while(0);

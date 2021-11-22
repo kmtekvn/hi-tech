@@ -55,10 +55,11 @@ void loop()
   {
     Serial.println("Read sensor data ");
     sensor_drv_get_all_data(&data);
+    /*
     DEBUG_MSG("SENSOR DATA");
     DEBUG_MSG(data.temperature);
     DEBUG_MSG(data.heartbeat);
-    
+    */
     Serial.println("publishing");
     /*TODO: call publish function */
     senml_encode_add_record(SENML_REC_TYPE_TEMP, data.temperature);
@@ -76,13 +77,13 @@ void mqtt_app_command_handler(String topic, String payload)
 {
   if ( topic == TOPIC_CMD ) 
   {
-    if (payload == LED_ON_CMD)
+   /* if (payload == LED_ON_CMD)
     {
       actuator_change_led_state(LED_ON);
     }else if (payload == LED_OFF_CMD){
       actuator_change_led_state(LED_OFF);
     } else if (payload == LED_PWM_CMD){
       actuator_change_led_brightness(0); // TODO: parse PWM value
-    }
+    }*/
   }
 }

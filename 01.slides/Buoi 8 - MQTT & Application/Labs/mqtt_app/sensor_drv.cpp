@@ -92,10 +92,10 @@ float sensor_drv_get_temp()
   float temperature = particleSensor.readTemperature();
   float filtered_val = room_temperature.reading(temperature);
   
-  DEBUG_MSG(temperature);
+ /* DEBUG_MSG(temperature);
   DEBUG_MSG(",");
   DEBUG_MSG(filtered_val);
-
+ */
   _sensor_drv_update_temperature(filtered_val);
   
   return filtered_val;
